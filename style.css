@@ -1,0 +1,64 @@
+body {
+  background: white;
+  font-family: Arial;
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  flex-direction: column;
+}
+
+.display {
+  width: 600px;
+  background-color: whitesmoke;
+  box-shadow: 3px 3px 3px lightgray;
+  margin: 20px;
+}
+
+header {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.line {
+  display: flex;
+  padding: 10px 20px;
+  height: 45px;
+}
+
+.number {
+  font-size: 20px;
+  background: paleturquoise;
+  padding: 10px 16px;
+  margin: 2px;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.operator {
+  font-size: 20px;
+  background: lightblue;
+  padding: 10px 16px;
+  margin: 2px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.equals {
+  font-size: 20px;
+  background: palegreen;
+  padding: 10px 16px;
+  margin: 2px;
+  border-radius: 20px;
+}
+
+.clear {
+  font-size: 20px;
+  background: pink;
+  padding: 10px 16px;
+  margin: 2px;
+  border-radius: 20px;
+}
