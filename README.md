@@ -4,3 +4,6 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 # Convulator
+A calculator and converter that is very much at alpha stage.
+
+Check it out at [convulator.surge.sh](http://convulator.surge.sh/)
