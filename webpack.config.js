@@ -1,8 +1,11 @@
+const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 module.exports = {
   entry: './src/app/index.js',
   output: {
-    filename: 'bundle.js'
-    // path: './app'
+    filename: 'convulator.js',
+    path: path.join(__dirname, '/dist')
   },
   module: {
     loaders: [{
@@ -15,5 +18,6 @@ module.exports = {
     'react/addons': true,
     'react/lib/ExecutionEnvironment': true,
     'react/lib/ReactContext': true
-  }
+  },
+  plugins: [new CopyWebpackPlugin([{from: 'web'}])]
 }
