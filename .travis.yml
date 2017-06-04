@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - "node"
+script:
+  - npm test
+  - npm run production
 deploy:
   provider: surge
   project: ./dist/
