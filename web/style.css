@@ -11,6 +11,7 @@ body {
 
 .display {
   width: 600px;
+  max-width: 90vw;
   background-color: whitesmoke;
   box-shadow: 3px 3px 3px lightgray;
   margin: 20px;
