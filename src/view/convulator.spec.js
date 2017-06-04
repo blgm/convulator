@@ -3,7 +3,7 @@ import React from 'react'
 import {shallow} from 'enzyme'
 import {Convulator} from './convulator'
 import {Buttons} from './button'
-import {Line} from './line'
+import {Display} from './display'
 
 describe('Convulator', () => {
   it('contains the expected components', () => {
@@ -11,7 +11,7 @@ describe('Convulator', () => {
     const fakeDispatcher = jest.fn()
     const wrapper = shallow(<Convulator state={fakeState} dispatcher={fakeDispatcher} />)
     expect(wrapper.containsAllMatchingElements([
-      <Line expression={fakeState.tokens} result={fakeState.result} />,
+      <Display expression={fakeState.tokens} result={fakeState.result} />,
       <Buttons dispatcher={fakeDispatcher} />
     ])).toBeTruthy()
   })

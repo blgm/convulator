@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Token} from './token'
 
-export function Line ({expression, result}) {
+export function Display ({expression, result}) {
   let line = [].concat(expression)
   if (typeof result === 'number') {
     line.push('=', result)
@@ -15,7 +15,7 @@ export function Line ({expression, result}) {
     </div>
   )
 }
-Line.PropTypes = {
+Display.PropTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   result: PropTypes.number.isRequired
 }

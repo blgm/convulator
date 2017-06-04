@@ -2,7 +2,7 @@ const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-  entry: './src/app/index.js',
+  entry: './src/view/index.js',
   output: {
     filename: 'convulator.js',
     path: path.join(__dirname, '/dist')

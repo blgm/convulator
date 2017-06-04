@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {store} from '../model/statestore'
+import {store} from '../state/statestore'
 import {Convulator} from './convulator'
 
 function render () {

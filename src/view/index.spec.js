@@ -1,6 +1,6 @@
 /* eslint-env jest */
 import ReactDOM from 'react-dom'
-import {store} from '../model/statestore'
+import {store} from '../state/statestore'
 
 describe('index', () => {
   it('iteracts with the store and React.render()', () => {
