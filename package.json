@@ -6,7 +6,9 @@
   "scripts": {
     "pretest": "standard --verbose",
     "test": "jest",
-    "posttest": "webpack"
+    "watch": "jest --watch",
+    "production": "webpack -p",
+    "serve": "webpack-dev-server --content-base dist/"
   },
   "repository": {
     "type": "git",
@@ -37,7 +39,8 @@
     "react-test-renderer": "^15.5.4",
     "redux": "^3.6.0",
     "standard": "^10.0.2",
-    "webpack": "^2.5.1"
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
     "prop-types": "^15.5.10",
