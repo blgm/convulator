@@ -1,12 +1,12 @@
 /* eslint-env jest */
 import React from 'react'
 import {shallow} from 'enzyme'
-import {Line} from './line'
+import {Display} from './display'
 
-describe('Line', () => {
+describe('Display', () => {
   it('displays an expression when there is no result', () => {
     const expression = [1, '+', 2, '*', 3]
-    const wrapper = shallow(<Line expression={expression} />)
+    const wrapper = shallow(<Display expression={expression} />)
     const tokens = wrapper.find('Token')
     expect(tokens.length).toBe(5)
     expect(tokens.at(0).prop('value')).toBe(1)
@@ -19,7 +19,7 @@ describe('Line', () => {
   it('displays an expression and a result', () => {
     const expression = [1, '+', 2, '*', 3]
     const result = 7
-    const wrapper = shallow(<Line expression={expression} result={result} />)
+    const wrapper = shallow(<Display expression={expression} result={result} />)
     const tokens = wrapper.find('Token')
     expect(tokens.length).toBe(7)
     expect(tokens.at(0).prop('value')).toBe(1)

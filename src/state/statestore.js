@@ -1,5 +1,5 @@
 import {createStore} from 'redux'
-import evaluate from './evaluator.js'
+import evaluate from '../evaluator/evaluator.js'
 
 export function reducer (state, action) {
   if (typeof state === 'undefined') {
