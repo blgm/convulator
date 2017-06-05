@@ -1,80 +1,62 @@
 import {createStore} from 'redux'
 import evaluate from '../evaluator/evaluator.js'
 
-export function reducer (state, action) {
-  if (typeof state === 'undefined') {
-    state = {
-      tokens: [],
-      canAddOperator: false
-    }
-  }
+export function reducer (stateIn, action) {
+  const tokensIn = (typeof stateIn === 'undefined') ? [] : stateIn.tokens
+  const tail = tokensIn[tokensIn.length - 1]
+  const tailType = typeof tail
+  let tokensOut = []
 
   if (typeof action === 'object') {
     switch (action.type) {
       case 'APPEND_NUMBER':
-        if (state.canAddOperator && state.tokens.length > 0) {
+        if (tokensIn.length > 0 && tailType === 'number') {
           // Append to existing number
-          const existingNumber = state.tokens[state.tokens.length - 1]
-          const newNumber = Number.parseInt(existingNumber.toString() + action.value.toString())
-          state = {
-            tokens: [...state.tokens.slice(0, state.tokens.length - 1), newNumber],
-            canAddOperator: true
-          }
+          const newNumber = Number.parseInt(tail.toString() + action.value.toString())
+          tokensOut = [...tokensIn.slice(0, tokensIn.length - 1), newNumber]
         } else {
-          state = {
-            tokens: [...state.tokens, action.value],
-            canAddOperator: true
-          }
+          tokensOut = [...tokensIn, action.value]
         }
         break
       case 'APPEND_OPERATOR':
-        if (state.canAddOperator) {
-          state = {
-            tokens: [...state.tokens, action.value],
-            canAddOperator: false
+        if (tokensIn.length) { // Can't add operator as first token
+          if (tailType === 'number') {
+            tokensOut = [...tokensIn, action.value]
+          } else {
+            // Replace existing operator
+            tokensOut = [...tokensIn.slice(0, tokensIn.length - 1), action.value]
           }
         }
         break
       case 'CLEAR_DIGIT':
-        if (state.tokens.length) {
-          const tail = state.tokens[state.tokens.length - 1]
-          if (typeof tail === 'string') {
-            state = {
-              tokens: [...state.tokens.slice(0, state.tokens.length - 1)],
-              canAddOperator: true
-            }
+        if (tokensIn.length) {
+          if (tailType === 'string') {
+            tokensOut = [...tokensIn.slice(0, tokensIn.length - 1)]
           } else if (tail.toString().length > 1) {
             const newNumber = Number.parseInt(tail.toString().slice(0, tail.toString().length - 1))
-            state = {
-              tokens: [...state.tokens.slice(0, state.tokens.length - 1), newNumber],
-              canAddOperator: true
-            }
+            tokensOut = [...tokensIn.slice(0, tokensIn.length - 1), newNumber]
           } else {
-            state = {
-              tokens: [...state.tokens.slice(0, state.tokens.length - 1)],
-              canAddOperator: false
-            }
+            tokensOut = [...tokensIn.slice(0, tokensIn.length - 1)]
           }
         }
         break
       case 'CLEAR_ALL':
-        if (state.tokens.length) {
-          state = {
-            tokens: [],
-            canAddOperator: false
-          }
+        if (tokensIn.length) {
+          tokensOut = []
         }
         break
     }
   }
 
+  let stateOut = {tokens: tokensOut}
+
   try {
-    state.result = evaluate(state.tokens)
+    stateOut.result = evaluate(tokensOut)
   } catch (e) {
-    state.result = null
+    stateOut.result = null
   }
 
-  return state
+  return stateOut
 }
 
 export const store = createStore(reducer)
