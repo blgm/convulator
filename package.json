@@ -8,7 +8,7 @@
     "test": "jest",
     "watch": "jest --watch",
     "production": "webpack -p",
-    "serve": "webpack-dev-server --content-base dist/"
+    "start": "webpack-dev-server --content-base dist/"
   },
   "repository": {
     "type": "git",
