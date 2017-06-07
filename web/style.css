@@ -29,37 +29,3 @@ header {
   padding: 10px 20px;
   height: 45px;
 }
-
-.number {
-  font-size: 20px;
-  background: paleturquoise;
-  padding: 10px 16px;
-  margin: 2px;
-  border-radius: 25px;
-  text-align: center;
-}
-
-.operator {
-  font-size: 20px;
-  background: lightblue;
-  padding: 10px 16px;
-  margin: 2px;
-  border-radius: 20px;
-  text-align: center;
-}
-
-.equals {
-  font-size: 20px;
-  background: palegreen;
-  padding: 10px 16px;
-  margin: 2px;
-  border-radius: 20px;
-}
-
-.clear {
-  font-size: 20px;
-  background: pink;
-  padding: 10px 16px;
-  margin: 2px;
-  border-radius: 20px;
-}
