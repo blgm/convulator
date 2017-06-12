@@ -1,36 +1,20 @@
 import React from 'react'
-import {style} from 'typestyle'
-
+import {numberStyle, operatorStyle, equalsStyle, clearStyle} from './style'
 export function Token ({value}) {
   return <div className={tokenClassName(value)}>{tokenValue(value)}</div>
 }
 
-const commonStyle = {
-  'font-size': '20px',
-  'padding': '10px 16px',
-  'margin': '2px',
-  'border-radius': '25px',
-  'text-align': 'center'
-}
-
-export const tokenStyle = {
-  number: style(commonStyle, {background: 'paleturquoise'}),
-  operator: style(commonStyle, {background: 'lightblue'}),
-  equals: style(commonStyle, {background: 'palegreen'}),
-  clear: style(commonStyle, {background: 'pink'})
-}
-
 function tokenClassName (value) {
   if (typeof value === 'number') {
-    return tokenStyle.number
+    return numberStyle
   } else if (value === '=') {
-    return tokenStyle.equals
+    return equalsStyle
   } else if (value === 'C') {
-    return tokenStyle.clear
+    return clearStyle
   } else if (value === 'AC') {
-    return tokenStyle.clear
+    return clearStyle
   } else {
-    return tokenStyle.operator
+    return operatorStyle
   }
 }
 

@@ -9,23 +9,9 @@ body {
   flex-direction: column;
 }
 
-.display {
-  width: 600px;
-  max-width: 90vw;
-  background-color: whitesmoke;
-  box-shadow: 3px 3px 3px lightgray;
-  margin: 20px;
-}
-
 header {
   font-size: 30px;
   text-align: center;
   margin-top: 20px;
   margin-bottom: 15px;
-}
-
-.line {
-  display: flex;
-  padding: 10px 20px;
-  height: 45px;
 }

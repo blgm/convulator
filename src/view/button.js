@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Token} from './token'
+import {displayStyle} from './style'
 
 export function Button ({value, onSubmit}) {
   return <td onClick={onSubmit}><Token value={value} /></td>
@@ -35,7 +36,7 @@ export function Buttons ({dispatcher}) {
   }
 
   return (
-    <div className='display'>
+    <div className={displayStyle}>
       <table>
         <tbody>
           <tr>
