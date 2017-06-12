@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Token} from './token'
+import {lineStyle, displayStyle} from './style'
 
 export function Display ({expression, result}) {
   let line = [].concat(expression)
@@ -10,8 +11,8 @@ export function Display ({expression, result}) {
 
   const tokens = line.map((value, index) => <Token value={value} key={index} />)
   return (
-    <div className='display'>
-      <div className='line'>{tokens}</div>
+    <div className={displayStyle}>
+      <div className={lineStyle}>{tokens}</div>
     </div>
   )
 }
