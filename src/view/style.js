@@ -16,13 +16,21 @@ export const displayStyle = style({
 
 const tokenCommon = {
   fontSize: '20px',
+  fontFamily: 'Courier',
   padding: '10px 16px',
   margin: '2px',
   borderRadius: '25px',
   textAlign: 'center'
 }
 
-export const numberStyle = style(tokenCommon, {background: 'paleturquoise'})
+export const numberStyle = style(
+  tokenCommon,
+  {
+    background: 'paleturquoise',
+    display: 'flex'
+  }
+)
+
 export const operatorStyle = style(tokenCommon, {background: 'lightblue'})
 export const equalsStyle = style(tokenCommon, {background: 'palegreen'})
 export const clearStyle = style(tokenCommon, {background: 'pink'})

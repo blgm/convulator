@@ -7,7 +7,7 @@ describe('Display', () => {
   it('displays an expression when there is no result', () => {
     const expression = [1, '+', 2, '*', 3]
     const wrapper = shallow(<Display expression={expression} />)
-    const tokens = wrapper.find('Token')
+    const tokens = wrapper.find('CSSTransitionGroup').children()
     expect(tokens.length).toBe(5)
     expect(tokens.at(0).prop('value')).toBe(1)
     expect(tokens.at(1).prop('value')).toBe('+')
@@ -20,7 +20,7 @@ describe('Display', () => {
     const expression = [1, '+', 2, '*', 3]
     const result = 7
     const wrapper = shallow(<Display expression={expression} result={result} />)
-    const tokens = wrapper.find('Token')
+    const tokens = wrapper.find('CSSTransitionGroup').children()
     expect(tokens.length).toBe(7)
     expect(tokens.at(0).prop('value')).toBe(1)
     expect(tokens.at(1).prop('value')).toBe('+')
