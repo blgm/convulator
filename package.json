@@ -45,7 +45,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-transition-group": "^1.2.0"
+    "react-transition-group": "^2.0.0"
   },
   "jest": {
     "collectCoverage": true,
