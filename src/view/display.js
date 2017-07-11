@@ -1,5 +1,5 @@
 import React from 'react'
-import {CSSTransitionGroup} from 'react-transition-group'
+import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import PropTypes from 'prop-types'
 import {Token} from './token'
 import {Number} from './number'
@@ -15,10 +15,10 @@ const transitionStyle = style({
       opacity: 1,
       transition: 'opacity 250ms ease'
     },
-    '&-leave': {
+    '&-exit': {
       opacity: 1
     },
-    '&-leave-active': {
+    '&-exit-active': {
       opacity: 0,
       transition: 'opacity 250ms ease'
     }
@@ -31,23 +31,23 @@ export function Display ({expression, result}) {
     line.push('=', result)
   }
 
-  const tokens = line.map((value, index) => {
-    if (typeof value === 'number') {
-      return <Number value={value} key={index} />
-    } else {
-      return <Token value={value} key={index} />
-    }
-  })
+  const tokens = line.map((value, index) => (
+    <CSSTransition
+      key={index}
+      classNames={transitionStyle}
+      timeout={250}
+    >
+      {typeof value === 'number'
+        ? <Number value={value} />
+        : <Token value={value} />}
+    </CSSTransition>
+  ))
 
   return (
     <div className={displayStyle}>
-      <CSSTransitionGroup
-        className={lineStyle}
-        transitionName={transitionStyle}
-        transitionEnterTimeout={250}
-        transitionLeaveTimeout={250}>
+      <TransitionGroup className={lineStyle}>
         {tokens}
-      </CSSTransitionGroup>
+      </TransitionGroup>
     </div>
   )
 }

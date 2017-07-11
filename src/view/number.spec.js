@@ -8,7 +8,7 @@ describe('Number', () => {
   it('can display a single digit number', () => {
     const wrapper = mount(<Number value={5} />)
 
-    const group = wrapper.find('CSSTransitionGroup')
+    const group = wrapper.find('TransitionGroup')
     expect(group.length).toBe(1)
     expect(group.text()).toBe('5')
     expect(group.hasClass(numberStyle)).toBeTruthy()
@@ -21,7 +21,7 @@ describe('Number', () => {
   it('can display a multi digit number', () => {
     const wrapper = mount(<Number value={234} />)
 
-    const group = wrapper.find('CSSTransitionGroup')
+    const group = wrapper.find('TransitionGroup')
     expect(group.length).toBe(1)
     expect(group.text()).toBe('234')
     expect(group.hasClass(numberStyle)).toBeTruthy()

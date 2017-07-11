@@ -1,7 +1,7 @@
 import React from 'react'
 import {numberStyle} from './style'
 import {style} from 'typestyle'
-import {CSSTransitionGroup} from 'react-transition-group'
+import {TransitionGroup, CSSTransition} from 'react-transition-group'
 
 const transitionStyle = style({
   $nest: {
@@ -14,11 +14,11 @@ const transitionStyle = style({
       width: '12px',
       transition: 'all 250ms ease'
     },
-    '&-leave': {
+    '&-exit': {
       opacity: 1,
       width: '12px'
     },
-    '&-leave-active': {
+    '&-exit-active': {
       opacity: 0,
       width: 0,
       transition: 'all 250ms ease'
@@ -27,14 +27,17 @@ const transitionStyle = style({
 })
 
 export function Number ({value}) {
-  const digits = value.toString().split('').map((digit, index) => <Digit value={digit} key={index} />)
-  return <CSSTransitionGroup
-    className={numberStyle}
-    transitionName={transitionStyle}
-    transitionEnterTimeout={250}
-    transitionLeaveTimeout={250}>
-    {digits}
-  </CSSTransitionGroup>
+  const digits = value.toString().split('').map((digit, index) => (
+    <CSSTransition
+      key={index}
+      classNames={transitionStyle}
+      timeout={250}
+    >
+      <Digit value={digit} />
+    </CSSTransition>
+  ))
+
+  return <TransitionGroup className={numberStyle}>{digits}</TransitionGroup>
 }
 
 function Digit ({value}) {
