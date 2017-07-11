@@ -37,9 +37,9 @@ export function Display ({expression, result}) {
       classNames={transitionStyle}
       timeout={250}
     >
-      {typeof value === 'number' ?
-        <Number value={value} /> :
-        <Token value={value} />}
+      {typeof value === 'number'
+        ? <Number value={value} />
+        : <Token value={value} />}
     </CSSTransition>
   ))
 
