@@ -19,5 +19,5 @@ module.exports = {
     'react/lib/ExecutionEnvironment': true,
     'react/lib/ReactContext': true
   },
-  plugins: [new CopyWebpackPlugin([{from: 'web'}])]
+  plugins: [new CopyWebpackPlugin([{from: 'src/static'}])]
 }

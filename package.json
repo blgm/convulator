@@ -4,11 +4,11 @@
   "description": "Converter and calculator",
   "main": "index.js",
   "scripts": {
-    "pretest": "standard --verbose",
+    "pretest": "standard --verbose --fix",
     "test": "jest",
     "watch": "jest --watch",
     "production": "webpack -p",
-    "start": "webpack-dev-server --content-base dist/"
+    "start": "webpack-dev-server --content-base dist/ --progress --open"
   },
   "repository": {
     "type": "git",
