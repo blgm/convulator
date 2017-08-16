@@ -14,6 +14,12 @@ export const displayStyle = style({
   margin: '20px'
 })
 
+export const dividerStyle = style({
+  width: '100%',
+  height: 0,
+  borderTop: '1px dotted lightgrey'
+})
+
 const tokenCommon = {
   fontSize: '20px',
   fontFamily: 'Courier',
