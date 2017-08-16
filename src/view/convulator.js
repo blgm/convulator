@@ -1,14 +1,20 @@
 import React from 'react'
 import {Buttons} from './button'
-import {Display} from './display'
 import {cssRule} from 'typestyle'
+import {Expression} from './expression'
+import {Result} from './result'
+import {displayStyle, dividerStyle} from './style'
 
 export function Convulator ({state, dispatcher}) {
   setupPage()
 
   return (
     <div>
-      <Display expression={state.tokens} result={state.result} />
+      <div className={displayStyle}>
+        <Expression expression={state.tokens} />
+        <div className={dividerStyle} />
+        <Result result={state.result} />
+      </div>
       <Buttons dispatcher={dispatcher} />
     </div>
   )
