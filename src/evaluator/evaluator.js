@@ -31,57 +31,47 @@ function allowed (next, found) {
 function num (value) {
   return {
     type: 'number',
-    value: Big(value)
+    resolve: () => Big(value)
   }
 }
 
 function op (value) {
-  return {
-    type: 'operator',
-    value: value
+  if (binary[value]) {
+    return {
+      type: 'operator',
+      precedence: binary[value].precedence,
+      operation: binary[value].operation
+    }
+  } else {
+    throw new Error('invalid operator: ' + value)
   }
 }
 
 function identifyTokens (tokens) {
-  return tokens.map(input => (
+  const operations = new LinkedList()
+  tokens.forEach(input => operations.add(
     typeof input === 'number'
       ? num(input)
       : op(input)
   ))
+  return operations
 }
 
-function identifyOperations (tokens) {
+function validateExpression (operations) {
   let next = ['number', 'end']
-  // Convert the tokens into a list of operations to be performed
-  const operations = new LinkedList()
-  tokens.forEach(token => {
+  // Iterate through the expression
+  for (let n = operations.head; typeof n !== 'undefined'; n = n.next) {
+    const token = n.value
     if (token.type === 'number') {
       allowed(next, 'number')
       next = ['operator', 'end']
-
-      operations.add({
-        type: 'literal',
-        value: token.value,
-        resolve: () => token.value
-      })
-    } else if (token.type === 'operator' && binary[token.value]) {
+    } else { // token.type === 'operator'
       allowed(next, 'operator')
       next = ['number']
-
-      operations.add({
-        type: 'binary',
-        value: token.value,
-        precedence: binary[token.value].precedence,
-        operation: binary[token.value].operation
-      })
-    } else {
-      throw new Error('invalid token: ' + token.value)
     }
-  })
+  }
 
   allowed(next, 'end')
-
-  return operations
 }
 
 // Mutates the operations list into a tree
@@ -107,10 +97,12 @@ function computePrecedenceTree (operations) {
 }
 
 export default function evaluate (tokens) {
-  if (tokens.length) {
-    const tokenObjs = identifyTokens(tokens)
+  if (Array.isArray(tokens) && tokens.length) {
     // Convert the tokens into a flat list of operations
-    const operations = identifyOperations(tokenObjs)
+    const operations = identifyTokens(tokens)
+
+    // Check syntactic validity of the expression
+    validateExpression(operations)
 
     // Convert the flat list into a precedence oriented list
     const tree = computePrecedenceTree(operations)

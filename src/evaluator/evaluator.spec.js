@@ -7,7 +7,7 @@ describe('evaluator', () => {
     it('throws an error on an invalid first token', () => {
       expect(() => {
         evaluate(['rubbish'])
-      }).toThrowError('invalid token: rubbish')
+      }).toThrowError('invalid operator: rubbish')
     })
 
     it('throws an error if the first token is an operator', () => {
