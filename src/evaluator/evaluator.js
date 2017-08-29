@@ -1,22 +1,23 @@
 'use strict'
 
 import {LinkedList} from './linkedlist.js'
+import Big from 'big.js'
 
 const binary = {
   '+': {
-    operation: (lhs, rhs) => lhs + rhs,
+    operation: (lhs, rhs) => lhs.plus(rhs),
     precedence: 1
   },
   '-': {
-    operation: (lhs, rhs) => lhs - rhs,
+    operation: (lhs, rhs) => lhs.minus(rhs),
     precedence: 1
   },
   '*': {
-    operation: (lhs, rhs) => lhs * rhs,
+    operation: (lhs, rhs) => lhs.times(rhs),
     precedence: 2
   },
   '/': {
-    operation: (lhs, rhs) => lhs / rhs,
+    operation: (lhs, rhs) => lhs.div(rhs),
     precedence: 2
   }
 }
@@ -27,38 +28,50 @@ function allowed (next, found) {
   }
 }
 
-function identifyOperations (tokens) {
-  let next = ['number', 'end']
-  // Convert the tokens into a list of operations to be performed
+function num (value) {
+  return {
+    type: 'number',
+    resolve: () => Big(value)
+  }
+}
+
+function op (value) {
+  if (binary[value]) {
+    return {
+      type: 'operator',
+      precedence: binary[value].precedence,
+      operation: binary[value].operation
+    }
+  } else {
+    throw new Error('invalid operator: ' + value)
+  }
+}
+
+function identifyTokens (tokens) {
   const operations = new LinkedList()
-  tokens.forEach(token => {
-    if (typeof token === 'number') {
+  tokens.forEach(input => operations.add(
+    typeof input === 'number'
+      ? num(input)
+      : op(input)
+  ))
+  return operations
+}
+
+function validateExpression (operations) {
+  let next = ['number', 'end']
+  // Iterate through the expression
+  for (let n = operations.head; typeof n !== 'undefined'; n = n.next) {
+    const token = n.value
+    if (token.type === 'number') {
       allowed(next, 'number')
       next = ['operator', 'end']
-
-      operations.add({
-        type: 'literal',
-        value: token,
-        resolve: () => token
-      })
-    } else if (typeof token === 'string' && binary[token]) {
+    } else { // token.type === 'operator'
       allowed(next, 'operator')
       next = ['number']
-
-      operations.add({
-        type: 'binary',
-        value: token,
-        precedence: binary[token].precedence,
-        operation: binary[token].operation
-      })
-    } else {
-      throw new Error('invalid token: ' + token)
     }
-  })
+  }
 
   allowed(next, 'end')
-
-  return operations
 }
 
 // Mutates the operations list into a tree
@@ -84,16 +97,19 @@ function computePrecedenceTree (operations) {
 }
 
 export default function evaluate (tokens) {
-  if (tokens.length) {
+  if (Array.isArray(tokens) && tokens.length) {
     // Convert the tokens into a flat list of operations
-    const operations = identifyOperations(tokens)
+    const operations = identifyTokens(tokens)
+
+    // Check syntactic validity of the expression
+    validateExpression(operations)
 
     // Convert the flat list into a precedence oriented list
     const tree = computePrecedenceTree(operations)
 
     // By this stage, the tree should have a single root, which we resolve
     // to get the arithmetic answer
-    return tree.head.value.resolve()
+    return parseFloat(tree.head.value.resolve().toString())
   } else {
     return null
   }
