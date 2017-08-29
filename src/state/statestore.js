@@ -1,42 +1,43 @@
 import {createStore} from 'redux'
-import evaluate from '../evaluator/evaluator.js'
+import {evaluate, number, operator} from '../evaluator/evaluator.js'
 
 export function reducer (stateIn, action) {
   const tokensIn = (typeof stateIn === 'undefined') ? [] : stateIn.tokens
   const tail = tokensIn[tokensIn.length - 1]
-  const tailType = typeof tail
+  const head = [...tokensIn.slice(0, tokensIn.length - 1)]
   let tokensOut = []
 
   if (typeof action === 'object') {
     switch (action.type) {
       case 'APPEND_NUMBER':
-        if (tokensIn.length > 0 && tailType === 'number') {
+        if (tokensIn.length > 0 && tail.type === 'number') {
           // Append to existing number
-          const newNumber = Number.parseInt(tail.toString() + action.value.toString())
-          tokensOut = [...tokensIn.slice(0, tokensIn.length - 1), newNumber]
+          tokensOut = [...head, tail.append(action.value)]
         } else {
-          tokensOut = [...tokensIn, action.value]
+          tokensOut = [...tokensIn, number(action.value)]
         }
         break
       case 'APPEND_OPERATOR':
         if (tokensIn.length) { // Can't add operator as first token
-          if (tailType === 'number') {
-            tokensOut = [...tokensIn, action.value]
+          if (tail.type === 'number') {
+            tokensOut = [...tokensIn, operator(action.value)]
           } else {
             // Replace existing operator
-            tokensOut = [...tokensIn.slice(0, tokensIn.length - 1), action.value]
+            tokensOut = [...head, operator(action.value)]
           }
         }
         break
       case 'CLEAR_DIGIT':
         if (tokensIn.length) {
-          if (tailType === 'string') {
-            tokensOut = [...tokensIn.slice(0, tokensIn.length - 1)]
-          } else if (tail.toString().length > 1) {
-            const newNumber = Number.parseInt(tail.toString().slice(0, tail.toString().length - 1))
-            tokensOut = [...tokensIn.slice(0, tokensIn.length - 1), newNumber]
+          if (tail.type === 'operator') {
+            tokensOut = head
           } else {
-            tokensOut = [...tokensIn.slice(0, tokensIn.length - 1)]
+            const newNumber = tail.remove()
+            if (newNumber) {
+              tokensOut = [...head, newNumber]
+            } else {
+              tokensOut = head
+            }
           }
         }
         break

@@ -21,7 +21,9 @@ describe('reducer', () => {
 
     describe('when the token list is empty', () => {
       it('adds the number to the token list', () => {
-        expect(reducer(undefined, action).tokens).toEqual([0])
+        const result = reducer(undefined, action).tokens[0]
+        expect(result.type).toBe('number')
+        expect(result.resolve().toString()).toBe('0')
       })
     })
 
@@ -32,7 +34,9 @@ describe('reducer', () => {
       })
 
       it('appends the number to the existing number', () => {
-        expect(reducer(start, action).tokens).toEqual([10])
+        const result = reducer(start, action).tokens[0]
+        expect(result.type).toBe('number')
+        expect(result.resolve().toString()).toBe('10')
       })
     })
 
@@ -47,7 +51,12 @@ describe('reducer', () => {
       })
 
       it('adds the number to the token list', () => {
-        expect(reducer(second, action).tokens).toEqual([0, '+', 0])
+        const result = reducer(second, action).tokens
+        expect(result[0].type).toBe('number')
+        expect(result[0].resolve().toString()).toBe('0')
+        expect(result[1].type).toBe('operator')
+        expect(result[2].type).toBe('number')
+        expect(result[2].resolve().toString()).toBe('0')
       })
     })
   })
@@ -71,11 +80,12 @@ describe('reducer', () => {
       })
 
       it('adds the operator to the token list', () => {
-        expect(reducer(start, action).tokens).toEqual([0, '+'])
+        const result = reducer(start, action).tokens[1]
+        expect(result.type).toBe('operator')
       })
     })
 
-    describe('when the token list is terminate by an operator', () => {
+    describe('when the token list is terminated by an operator', () => {
       const first = reducer(undefined, {
         type: 'APPEND_NUMBER',
         value: 0
@@ -86,7 +96,8 @@ describe('reducer', () => {
       })
 
       it('does not add the operator to the token list', () => {
-        expect(reducer(second, action).tokens).toEqual([0, '+'])
+        const result = reducer(second, action).tokens
+        expect(result).toHaveLength(2)
       })
     })
   })
@@ -109,14 +120,14 @@ describe('reducer', () => {
       const first = reducer(undefined, {type: 'APPEND_NUMBER', value: 2})
       const second = reducer(first, {type: 'APPEND_NUMBER', value: 3})
       const state = reducer(second, del)
-      expect(state.tokens).toEqual([2])
+      expect(state.tokens[0].resolve().toString()).toBe('2')
     })
 
     it('will remove an operator', () => {
       const first = reducer(undefined, {type: 'APPEND_NUMBER', value: 4})
       const second = reducer(first, {type: 'APPEND_OPERATOR', value: '+'})
       const state = reducer(second, del)
-      expect(state.tokens).toEqual([4])
+      expect(state.tokens).toHaveLength(1)
     })
   })
 
@@ -150,9 +161,8 @@ describe('store', () => {
       type: 'APPEND_NUMBER',
       value: 2
     })
-    expect(store.getState()).toEqual({
-      tokens: [2],
-      result: 2
-    })
+    const state = store.getState()
+    expect(state.tokens).toHaveLength(1)
+    expect(state.result).toBe(2)
   })
 })
