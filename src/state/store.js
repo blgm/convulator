@@ -1,8 +1,9 @@
-import {createStore as createReduxStore} from 'redux'
+import {createStore as createReduxStore, combineReducers} from 'redux'
+import bindSelectors from 'redux-bind-selectors'
+import {createSelector} from 'reselect'
 import {evaluate, number, operator} from '../evaluator/evaluator.js'
 
-function reducer (stateIn, action) {
-  const tokensIn = (typeof stateIn === 'undefined') ? [] : stateIn.tokens
+function tokensReducer (tokensIn = [], action) {
   const tail = tokensIn[tokensIn.length - 1]
   const head = [...tokensIn.slice(0, tokensIn.length - 1)]
   let tokensOut = []
@@ -10,7 +11,7 @@ function reducer (stateIn, action) {
   switch (action.type) {
     case 'APPEND_NUMBER':
       if (tokensIn.length > 0 && tail.type === 'number') {
-          // Append to existing number
+        // Append to existing number
         tokensOut = [...head, tail.append(action.value)]
       } else {
         tokensOut = [...tokensIn, number(action.value)]
@@ -21,7 +22,7 @@ function reducer (stateIn, action) {
         if (tail.type === 'number') {
           tokensOut = [...tokensIn, operator(action.value)]
         } else {
-            // Replace existing operator
+          // Replace existing operator
           tokensOut = [...head, operator(action.value)]
         }
       }
@@ -47,17 +48,23 @@ function reducer (stateIn, action) {
       break
   }
 
-  let stateOut = {tokens: tokensOut}
-
-  try {
-    stateOut.result = evaluate(tokensOut)
-  } catch (e) {
-    stateOut.result = null
-  }
-
-  return stateOut
+  return tokensOut
 }
 
+const resultSelector = createSelector(
+  state => state.tokens,
+  tokens => {
+    try {
+      return evaluate(tokens)
+    } catch (e) {
+      return null
+    }
+  }
+)
+
 export function createStore () {
-  return createReduxStore(reducer)
+  return createReduxStore(
+    combineReducers({tokens: tokensReducer}),
+    bindSelectors({result: resultSelector})
+  )
 }
