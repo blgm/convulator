@@ -27,32 +27,54 @@ function allowed (next, found) {
   }
 }
 
+function num (value) {
+  return {
+    type: 'number',
+    value: value
+  }
+}
+
+function op (value) {
+  return {
+    type: 'operator',
+    value: value
+  }
+}
+
+function identifyTokens (tokens) {
+  return tokens.map(input => (
+    typeof input === 'number'
+      ? num(input)
+      : op(input)
+  ))
+}
+
 function identifyOperations (tokens) {
   let next = ['number', 'end']
   // Convert the tokens into a list of operations to be performed
   const operations = new LinkedList()
   tokens.forEach(token => {
-    if (typeof token === 'number') {
+    if (token.type === 'number') {
       allowed(next, 'number')
       next = ['operator', 'end']
 
       operations.add({
         type: 'literal',
-        value: token,
-        resolve: () => token
+        value: token.value,
+        resolve: () => token.value
       })
-    } else if (typeof token === 'string' && binary[token]) {
+    } else if (token.type === 'operator' && binary[token.value]) {
       allowed(next, 'operator')
       next = ['number']
 
       operations.add({
         type: 'binary',
-        value: token,
-        precedence: binary[token].precedence,
-        operation: binary[token].operation
+        value: token.value,
+        precedence: binary[token.value].precedence,
+        operation: binary[token.value].operation
       })
     } else {
-      throw new Error('invalid token: ' + token)
+      throw new Error('invalid token: ' + token.value)
     }
   })
 
@@ -85,8 +107,9 @@ function computePrecedenceTree (operations) {
 
 export default function evaluate (tokens) {
   if (tokens.length) {
+    const tokenObjs = identifyTokens(tokens)
     // Convert the tokens into a flat list of operations
-    const operations = identifyOperations(tokens)
+    const operations = identifyOperations(tokenObjs)
 
     // Convert the flat list into a precedence oriented list
     const tree = computePrecedenceTree(operations)
