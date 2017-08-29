@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {store} from '../state/statestore'
+import {createStore} from '../state/store'
 import {Convulator} from './convulator'
+
+const store = createStore()
 
 function render () {
   const state = store.getState()
