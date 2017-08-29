@@ -1,5 +1,3 @@
-'use strict'
-
 import {LinkedList} from './linkedlist.js'
 import Big from 'big.js'
 
@@ -28,14 +26,18 @@ function allowed (next, found) {
   }
 }
 
-function num (value) {
+export function number (value) {
   return {
     type: 'number',
-    resolve: () => Big(value)
+    resolve: () => Big(value),
+    append: s => number(value.toString() + s.toString()),
+    remove: () => (value.toString().length > 1
+      ? number(value.toString().slice(0, value.toString().length - 1))
+      : undefined)
   }
 }
 
-function op (value) {
+export function operator (value) {
   if (binary[value]) {
     return {
       type: 'operator',
@@ -47,31 +49,25 @@ function op (value) {
   }
 }
 
-function identifyTokens (tokens) {
+function processAndValidate (tokens) {
   const operations = new LinkedList()
-  tokens.forEach(input => operations.add(
-    typeof input === 'number'
-      ? num(input)
-      : op(input)
-  ))
-  return operations
-}
-
-function validateExpression (operations) {
   let next = ['number', 'end']
   // Iterate through the expression
-  for (let n = operations.head; typeof n !== 'undefined'; n = n.next) {
-    const token = n.value
+  tokens.forEach(token => {
     if (token.type === 'number') {
       allowed(next, 'number')
       next = ['operator', 'end']
-    } else { // token.type === 'operator'
+    } else if (token.type === 'operator') {
       allowed(next, 'operator')
       next = ['number']
+    } else {
+      throw new Error('invalid token: ' + token)
     }
-  }
+    operations.add(token)
+  })
 
   allowed(next, 'end')
+  return operations
 }
 
 // Mutates the operations list into a tree
@@ -96,13 +92,11 @@ function computePrecedenceTree (operations) {
   return operations
 }
 
-export default function evaluate (tokens) {
+export function evaluate (tokens) {
   if (Array.isArray(tokens) && tokens.length) {
-    // Convert the tokens into a flat list of operations
-    const operations = identifyTokens(tokens)
-
     // Check syntactic validity of the expression
-    validateExpression(operations)
+    // and convert the tokens into a flat list of operations
+    const operations = processAndValidate(tokens)
 
     // Convert the flat list into a precedence oriented list
     const tree = computePrecedenceTree(operations)
