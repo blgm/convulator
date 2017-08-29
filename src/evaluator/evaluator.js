@@ -1,22 +1,23 @@
 'use strict'
 
 import {LinkedList} from './linkedlist.js'
+import Big from 'big.js'
 
 const binary = {
   '+': {
-    operation: (lhs, rhs) => lhs + rhs,
+    operation: (lhs, rhs) => lhs.plus(rhs),
     precedence: 1
   },
   '-': {
-    operation: (lhs, rhs) => lhs - rhs,
+    operation: (lhs, rhs) => lhs.minus(rhs),
     precedence: 1
   },
   '*': {
-    operation: (lhs, rhs) => lhs * rhs,
+    operation: (lhs, rhs) => lhs.times(rhs),
     precedence: 2
   },
   '/': {
-    operation: (lhs, rhs) => lhs / rhs,
+    operation: (lhs, rhs) => lhs.div(rhs),
     precedence: 2
   }
 }
@@ -30,7 +31,7 @@ function allowed (next, found) {
 function num (value) {
   return {
     type: 'number',
-    value: value
+    value: Big(value)
   }
 }
 
@@ -116,7 +117,7 @@ export default function evaluate (tokens) {
 
     // By this stage, the tree should have a single root, which we resolve
     // to get the arithmetic answer
-    return tree.head.value.resolve()
+    return parseFloat(tree.head.value.resolve().toString())
   } else {
     return null
   }
