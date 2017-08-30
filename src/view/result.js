@@ -5,7 +5,6 @@ import {style} from 'typestyle'
 
 export const resultStyle = style({
   display: 'flex',
-  direction: 'rtl',
   padding: '10px 20px',
   height: '45px'
 })

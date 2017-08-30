@@ -29,7 +29,7 @@ describe('store', () => {
         store.dispatch(action)
         const result = store.getState().tokens[0]
         expect(result.type).toBe('number')
-        expect(result.resolve().toString()).toBe('0')
+        expect(result.value).toBe('0')
       })
     })
 
@@ -44,7 +44,7 @@ describe('store', () => {
         store.dispatch(action)
         const token = store.getState().tokens[0]
         expect(token.type).toBe('number')
-        expect(token.resolve().toString()).toBe('10')
+        expect(token.value).toBe('10')
       })
     })
 
@@ -64,10 +64,10 @@ describe('store', () => {
         store.dispatch(first)
         const tokens = store.getState().tokens
         expect(tokens[0].type).toBe('number')
-        expect(tokens[0].resolve().toString()).toBe('0')
+        expect(tokens[0].value).toBe('0')
         expect(tokens[1].type).toBe('operator')
         expect(tokens[2].type).toBe('number')
-        expect(tokens[2].resolve().toString()).toBe('0')
+        expect(tokens[2].value).toBe('0')
       })
     })
   })
@@ -142,7 +142,7 @@ describe('store', () => {
       store.dispatch({type: 'APPEND_NUMBER', value: 3})
       store.dispatch(del)
       const state = store.getState()
-      expect(state.tokens[0].resolve().toString()).toBe('2')
+      expect(state.tokens[0].value).toBe('2')
     })
 
     it('will remove an operator', () => {

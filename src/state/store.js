@@ -1,7 +1,8 @@
 import {createStore as createReduxStore, combineReducers} from 'redux'
 import bindSelectors from 'redux-bind-selectors'
 import {createSelector} from 'reselect'
-import {evaluate, number, operator} from '../evaluator/evaluator.js'
+import evaluate from '../evaluator/evaluator.js'
+import * as tokens from '../evaluator/tokens'
 
 function tokensReducer (tokensIn = [], action) {
   const tail = tokensIn[tokensIn.length - 1]
@@ -12,18 +13,19 @@ function tokensReducer (tokensIn = [], action) {
     case 'APPEND_NUMBER':
       if (tokensIn.length > 0 && tail.type === 'number') {
         // Append to existing number
-        tokensOut = [...head, tail.append(action.value)]
+        tokensOut = [...head, tokens.appendDigit(tail, action.value)]
       } else {
-        tokensOut = [...tokensIn, number(action.value)]
+        // Add a new number token
+        tokensOut = [...tokensIn, tokens.appendDigit(undefined, action.value)]
       }
       break
     case 'APPEND_OPERATOR':
       if (tokensIn.length) { // Can't add operator as first token
         if (tail.type === 'number') {
-          tokensOut = [...tokensIn, operator(action.value)]
+          tokensOut = [...tokensIn, tokens.operator(action.value)]
         } else {
           // Replace existing operator
-          tokensOut = [...head, operator(action.value)]
+          tokensOut = [...head, tokens.operator(action.value)]
         }
       }
       break
@@ -32,7 +34,7 @@ function tokensReducer (tokensIn = [], action) {
         if (tail.type === 'operator') {
           tokensOut = head
         } else {
-          const newNumber = tail.remove()
+          const newNumber = tokens.removeDigit(tail)
           if (newNumber) {
             tokensOut = [...head, newNumber]
           } else {

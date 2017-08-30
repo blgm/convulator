@@ -26,28 +26,19 @@ function allowed (next, found) {
   }
 }
 
-export function number (value) {
-  return {
-    type: 'number',
-    value: value,
-    resolve: () => Big(value),
-    append: s => number(value.toString() + s.toString()),
-    remove: () => (value.toString().length > 1
-      ? number(value.toString().slice(0, value.toString().length - 1))
-      : undefined)
-  }
+function number (token) {
+  return {...token, resolve: () => Big(token.value)}
 }
 
-export function operator (value) {
-  if (binary[value]) {
+function operator (token) {
+  if (binary[token.value]) {
     return {
-      type: 'operator',
-      value: value,
-      precedence: binary[value].precedence,
-      operation: binary[value].operation
+      ...token,
+      precedence: binary[token.value].precedence,
+      operation: binary[token.value].operation
     }
   } else {
-    throw new Error('invalid operator: ' + value)
+    throw new Error('invalid operator: ' + token.value)
   }
 }
 
@@ -59,13 +50,14 @@ function processAndValidate (tokens) {
     if (token.type === 'number') {
       allowed(next, 'number')
       next = ['operator', 'end']
+      operations.add(number(token))
     } else if (token.type === 'operator') {
       allowed(next, 'operator')
       next = ['number']
+      operations.add(operator(token))
     } else {
       throw new Error('invalid token: ' + token)
     }
-    operations.add(token)
   })
 
   allowed(next, 'end')
@@ -94,7 +86,7 @@ function computePrecedenceTree (operations) {
   return operations
 }
 
-export function evaluate (tokens) {
+export default function evaluate (tokens) {
   if (Array.isArray(tokens) && tokens.length) {
     // Check syntactic validity of the expression
     // and convert the tokens into a flat list of operations
