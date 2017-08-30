@@ -29,6 +29,7 @@ function allowed (next, found) {
 export function number (value) {
   return {
     type: 'number',
+    value: value,
     resolve: () => Big(value),
     append: s => number(value.toString() + s.toString()),
     remove: () => (value.toString().length > 1
@@ -41,6 +42,7 @@ export function operator (value) {
   if (binary[value]) {
     return {
       type: 'operator',
+      value: value,
       precedence: binary[value].precedence,
       operation: binary[value].operation
     }

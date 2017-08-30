@@ -8,10 +8,13 @@ import {displayStyle, dividerStyle} from './style'
 export function Convulator ({state, dispatcher}) {
   setupPage()
 
+  /* istanbul ignore next */
+  const tokens = state.tokens.map(t => t.value)
+
   return (
     <div>
       <div className={displayStyle}>
-        <Expression expression={state.tokens} />
+        <Expression expression={tokens} />
         <div className={dividerStyle} />
         <Result result={state.result} />
       </div>
