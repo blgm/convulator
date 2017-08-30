@@ -5,7 +5,9 @@ export function operator (value) {
 
 export function appendDigit (initial, addition) {
   const type = 'number'
-  const value = (initial && typeof initial.value === 'string' ? initial.value : '') + addition
+  const value = (initial && typeof initial.value === 'string')
+    ? initial.value + addition
+    : addition.toString()
   return {type, value}
 }
 
