@@ -1,6 +1,20 @@
 /* eslint-env jest */
 
-import {evaluate, number, operator} from '../evaluator/evaluator.js'
+import evaluate from '../evaluator/evaluator.js'
+
+const number = value => {
+  return {
+    type: 'number',
+    value: value.toString()
+  }
+}
+
+const operator = value => {
+  return {
+    type: 'operator',
+    value: value
+  }
+}
 
 describe('evaluator', () => {
   describe('invalid expressions', () => {
@@ -35,6 +49,15 @@ describe('evaluator', () => {
           operator('+')
         ])
       }).toThrowError(/Found end, but expected one of:/)
+    })
+
+    it('throws an error for an unknown operator', () => {
+      expect(() => {
+        evaluate([
+          number(7),
+          operator('&')
+        ])
+      }).toThrowError(/invalid operator: &/)
     })
   })
 
@@ -197,40 +220,6 @@ describe('evaluator', () => {
         operator('-'),
         number(1)
       ])).toBe(9)
-    })
-  })
-
-  describe('tokens', () => {
-    describe('number', () => {
-      describe('appending', () => {
-        it('performs string concatenation for a single digit number', () => {
-          const n = number(1).append(2)
-          expect(n.resolve().toString()).toBe('12')
-        })
-
-        it('performs string concatenation for a multi digit number', () => {
-          const n = number(64564).append(9)
-          expect(n.resolve().toString()).toBe('645649')
-        })
-      })
-
-      describe('removing', () => {
-        it('removes the last digit from a multi digit number', () => {
-          const n = number(4573258).remove()
-          expect(n.resolve().toString()).toBe('457325')
-        })
-
-        it('returns undefined for a single digit number', () => {
-          const n = number(4).remove()
-          expect(n).toBeUndefined()
-        })
-      })
-    })
-
-    describe('operator', () => {
-      it('will not create an invalid operator', () => {
-        expect(() => operator('foo')).toThrow(/invalid operator: foo/)
-      })
     })
   })
 })
