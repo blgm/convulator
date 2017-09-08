@@ -3,7 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
-  entry: './src/view/index.js',
+  entry: './src/view/app.js',
   output: {
     filename: 'convulator.js',
     path: path.join(__dirname, '/dist')

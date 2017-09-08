@@ -1,45 +1,28 @@
 import React from 'react'
 import {Buttons} from './button'
-import {cssRule} from 'typestyle'
 import {Expression} from './expression'
 import {Result} from './result'
 import {displayStyle, dividerStyle} from './style'
+import {connect} from 'react-redux'
 
-export function Convulator ({state, dispatcher}) {
-  setupPage()
+export const mapStateToProps = state => ({
+  expression: /* istanbul ignore next */ state.tokens.map(t => t.value),
+  result: state.result
+})
 
-  /* istanbul ignore next */
-  const tokens = state.tokens.map(t => t.value)
+export const dispatchProps = dispatch => ({dispatcher: dispatch})
 
+export const UnconnectedConvulator = ({expression, result, dispatcher}) => {
   return (
     <div>
       <div className={displayStyle}>
-        <Expression expression={tokens} />
+        <Expression expression={expression} />
         <div className={dividerStyle} />
-        <Result result={state.result} />
+        <Result result={result} />
       </div>
       <Buttons dispatcher={dispatcher} />
     </div>
   )
 }
 
-function setupPage () {
-  // Some style for the staic html page
-  cssRule('body', {
-    background: 'white',
-    fontFamily: 'Arial',
-    display: 'flex',
-    justifyContent: 'center'
-  })
-
-  cssRule('.page', {
-    flexDirection: 'column'
-  })
-
-  cssRule('header', {
-    'fontSize': '30px',
-    'textAlign': 'center',
-    'marginTop': '20px',
-    'marginBottom': '15px'
-  })
-}
+export const Convulator = connect(mapStateToProps, dispatchProps)(UnconnectedConvulator)
