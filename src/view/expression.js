@@ -49,6 +49,6 @@ export function Expression ({expression}) {
     </TransitionGroup>
   )
 }
-Expression.PropTypes = {
+Expression.propTypes = {
   expression: PropTypes.array.isRequired
 }
