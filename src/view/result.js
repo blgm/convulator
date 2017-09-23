@@ -10,7 +10,7 @@ export const resultStyle = style({
   height: '45px'
 })
 
-function UnconnectedResult ({result}) {
+function Result ({result}) {
   return (
     <div className={resultStyle}>
       {typeof result !== 'number'
@@ -20,10 +20,10 @@ function UnconnectedResult ({result}) {
     </div>
   )
 }
-UnconnectedResult.propTypes = {
+Result.propTypes = {
   result: PropTypes.number
 }
 
 const mapStateToProps = state => ({result: state.result})
 
-export default connect(mapStateToProps)(UnconnectedResult)
+export default connect(mapStateToProps)(Result)
