@@ -1,57 +1,62 @@
 import {createStore as createReduxStore, combineReducers} from 'redux'
 import bindSelectors from 'redux-bind-selectors'
+import {createActions, handleActions} from 'redux-actions'
 import {createSelector} from 'reselect'
 import evaluate from '../evaluator/evaluator.js'
-import * as tokens from '../evaluator/tokens'
+import {appendDigit, operator, removeDigit} from '../evaluator/tokens'
 
-function tokensReducer (tokensIn = [], action) {
-  const tail = tokensIn[tokensIn.length - 1]
-  const head = [...tokensIn.slice(0, tokensIn.length - 1)]
-  let tokensOut = []
+export const actions = createActions(
+  'appendNumber',
+  'appendOperator',
+  'clearDigit',
+  'clearAll'
+)
 
-  switch (action.type) {
-    case 'APPEND_NUMBER':
-      if (tokensIn.length > 0 && tail.type === 'number') {
+const last = list => list[list.length - 1]
+const head = list => [...list.slice(0, list.length - 1)]
+
+const tokensReducer = handleActions(
+  {
+    [actions.appendNumber]: (tokens, action) => {
+      if (tokens.length > 0 && last(tokens).type === 'number') {
         // Append to existing number
-        tokensOut = [...head, tokens.appendDigit(tail, action.value)]
+        return [...head(tokens), appendDigit(last(tokens), action.payload)]
       } else {
         // Add a new number token
-        tokensOut = [...tokensIn, tokens.appendDigit(undefined, action.value)]
+        return [...tokens, appendDigit(undefined, action.payload)]
       }
-      break
-    case 'APPEND_OPERATOR':
-      if (tokensIn.length) { // Can't add operator as first token
-        if (tail.type === 'number') {
-          tokensOut = [...tokensIn, tokens.operator(action.value)]
+    },
+
+    [actions.appendOperator]: (tokens, action) => {
+      if (tokens.length) { // Can't add operator as first token
+        if (last(tokens).type === 'number') {
+          return [...tokens, operator(action.payload)]
         } else {
           // Replace existing operator
-          tokensOut = [...head, tokens.operator(action.value)]
+          return [...head(tokens), operator(action.payload)]
         }
       }
-      break
-    case 'CLEAR_DIGIT':
-      if (tokensIn.length) {
-        if (tail.type === 'operator') {
-          tokensOut = head
+    },
+
+    [actions.clearDigit]: (tokens, action) => {
+      if (tokens.length) {
+        if (last(tokens).type === 'operator') {
+          return head(tokens)
         } else {
-          const newNumber = tokens.removeDigit(tail)
+          const newNumber = removeDigit(last(tokens))
           if (newNumber) {
-            tokensOut = [...head, newNumber]
+            return [...head(tokens), newNumber]
           } else {
-            tokensOut = head
+            return head(tokens)
           }
         }
       }
-      break
-    case 'CLEAR_ALL':
-      if (tokensIn.length) {
-        tokensOut = []
-      }
-      break
-  }
+    },
 
-  return tokensOut
-}
+    [actions.clearAll]: () => []
+  },
+  []
+)
 
 const resultSelector = createSelector(
   state => state.tokens,

@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import {createStore} from './store.js'
+import {createStore, actions} from './store.js'
 
 describe('store', () => {
   let store
@@ -19,10 +19,7 @@ describe('store', () => {
   })
 
   describe('number as action', () => {
-    const action = {
-      type: 'APPEND_NUMBER',
-      value: 0
-    }
+    const action = actions.appendNumber(0)
 
     describe('when the token list is empty', () => {
       it('adds the number to the token list', () => {
@@ -34,10 +31,7 @@ describe('store', () => {
     })
 
     describe('when the token list is terminated by a number', () => {
-      const start = {
-        type: 'APPEND_NUMBER',
-        value: 1
-      }
+      const start = actions.appendNumber(1)
 
       it('appends the number to the existing number', () => {
         store.dispatch(start)
@@ -49,14 +43,8 @@ describe('store', () => {
     })
 
     describe('when the token list is terminated by an operator', () => {
-      const first = {
-        type: 'APPEND_NUMBER',
-        value: 0
-      }
-      const second = {
-        type: 'APPEND_OPERATOR',
-        value: '+'
-      }
+      const first = actions.appendNumber(0)
+      const second = actions.appendOperator('+')
 
       it('adds the number to the token list', () => {
         store.dispatch(first)
@@ -73,10 +61,7 @@ describe('store', () => {
   })
 
   describe('operator as action', () => {
-    const action = {
-      type: 'APPEND_OPERATOR',
-      value: '+'
-    }
+    const action = actions.appendOperator('+')
 
     describe('when the token list is empty', () => {
       it('does not add the operator to the token list', () => {
@@ -87,10 +72,7 @@ describe('store', () => {
     })
 
     describe('when the token list already has a number', () => {
-      const start = {
-        type: 'APPEND_NUMBER',
-        value: 0
-      }
+      const start = actions.appendNumber(0)
 
       it('adds the operator to the token list', () => {
         store.dispatch(start)
@@ -102,14 +84,8 @@ describe('store', () => {
     })
 
     describe('when the token list is terminated by an operator', () => {
-      const first = {
-        type: 'APPEND_NUMBER',
-        value: 0
-      }
-      const second = {
-        type: 'APPEND_OPERATOR',
-        value: '+'
-      }
+      const first = actions.appendNumber(0)
+      const second = actions.appendOperator('+')
 
       it('does not add the operator to the token list', () => {
         store.dispatch(first)
@@ -122,7 +98,7 @@ describe('store', () => {
   })
 
   describe('delete digit', () => {
-    const del = {type: 'CLEAR_DIGIT'}
+    const del = actions.clearDigit()
 
     it('does nothing when the store is empty', () => {
       store.dispatch(del)
@@ -131,23 +107,23 @@ describe('store', () => {
     })
 
     it('will remove a single number', () => {
-      store.dispatch({type: 'APPEND_NUMBER', value: 1})
+      store.dispatch(actions.appendNumber(1))
       store.dispatch(del)
       const tokens = store.getState().tokens
       expect(tokens).toHaveLength(0)
     })
 
     it('will remove the last digit of a number', () => {
-      store.dispatch({type: 'APPEND_NUMBER', value: 2})
-      store.dispatch({type: 'APPEND_NUMBER', value: 3})
+      store.dispatch(actions.appendNumber(2))
+      store.dispatch(actions.appendNumber(3))
       store.dispatch(del)
       const state = store.getState()
       expect(state.tokens[0].value).toBe('2')
     })
 
     it('will remove an operator', () => {
-      store.dispatch({type: 'APPEND_NUMBER', value: 4})
-      store.dispatch({type: 'APPEND_OPERATOR', value: '+'})
+      store.dispatch(actions.appendNumber(4))
+      store.dispatch(actions.appendOperator('+'))
       store.dispatch(del)
       const state = store.getState()
       expect(state.tokens).toHaveLength(1)
@@ -155,7 +131,7 @@ describe('store', () => {
   })
 
   describe('delete all', () => {
-    const del = {type: 'CLEAR_ALL'}
+    const del = actions.clearAll()
 
     it('does nothing when the store is empty', () => {
       store.dispatch(del)
@@ -164,8 +140,8 @@ describe('store', () => {
     })
 
     it('will remove all digits', () => {
-      store.dispatch({type: 'APPEND_NUMBER', value: 2})
-      store.dispatch({type: 'APPEND_NUMBER', value: 3})
+      store.dispatch(actions.appendNumber(2))
+      store.dispatch(actions.appendNumber(3))
       store.dispatch(del)
       const tokens = store.getState().tokens
       expect(tokens).toHaveLength(0)
