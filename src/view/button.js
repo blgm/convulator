@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Token} from './token'
 import {displayStyle} from './style'
+import {actions} from '../state/store'
 
 export function Button ({value, onSubmit}) {
   return <td onClick={onSubmit}><Token value={value} /></td>
@@ -15,22 +16,20 @@ export function Buttons ({dispatcher}) {
   // Generate a function for the onSubmit event
   function getOnSubmit (value) {
     if (typeof value === 'number') {
-      const type = 'APPEND_NUMBER'
       return function () {
-        dispatcher({type, value})
+        dispatcher(actions.appendNumber(value))
       }
     } else if (value === 'C') {
       return function () {
-        dispatcher({type: 'CLEAR_DIGIT'})
+        dispatcher(actions.clearDigit())
       }
     } else if (value === 'AC') {
       return function () {
-        dispatcher({type: 'CLEAR_ALL'})
+        dispatcher(actions.clearAll())
       }
     } else {
-      const type = 'APPEND_OPERATOR'
       return function () {
-        dispatcher({type, value})
+        dispatcher(actions.appendOperator(value))
       }
     }
   }

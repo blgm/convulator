@@ -32,7 +32,7 @@ describe('Buttons (pad)', () => {
       const button = wrapper.find('Button').filterWhere(n => n.prop('value') === i)
       expect(button.length).toBe(1)
       button.find('td').simulate('click')
-      expect(fakeDispatcher).toHaveBeenCalledWith({ type: 'APPEND_NUMBER', value: i })
+      expect(fakeDispatcher).toHaveBeenCalledWith({ type: 'appendNumber', payload: i })
     })
   }
 
@@ -41,7 +41,7 @@ describe('Buttons (pad)', () => {
       const button = wrapper.find('Button').filterWhere(n => n.prop('value') === operator)
       expect(button.length).toBe(1)
       button.find('td').simulate('click')
-      expect(fakeDispatcher).toHaveBeenCalledWith({ type: 'APPEND_OPERATOR', value: operator })
+      expect(fakeDispatcher).toHaveBeenCalledWith({ type: 'appendOperator', payload: operator })
     })
   })
 
@@ -49,13 +49,13 @@ describe('Buttons (pad)', () => {
     const button = wrapper.find('Button').filterWhere(n => n.prop('value') === 'C')
     expect(button.length).toBe(1)
     button.find('td').simulate('click')
-    expect(fakeDispatcher).toHaveBeenCalledWith({ type: 'CLEAR_DIGIT' })
+    expect(fakeDispatcher).toHaveBeenCalledWith({ type: 'clearDigit' })
   })
 
   it('has a clear all button', () => {
     const button = wrapper.find('Button').filterWhere(n => n.prop('value') === 'AC')
     expect(button.length).toBe(1)
     button.find('td').simulate('click')
-    expect(fakeDispatcher).toHaveBeenCalledWith({ type: 'CLEAR_ALL' })
+    expect(fakeDispatcher).toHaveBeenCalledWith({ type: 'clearAll' })
   })
 })
