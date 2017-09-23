@@ -7,7 +7,7 @@ import {actions} from '../state/store'
 export function Button ({value, onSubmit}) {
   return <td onClick={onSubmit}><Token value={value} /></td>
 }
-Button.PropTypes = {
+Button.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onSubmit: PropTypes.func.isRequired
 }
@@ -67,6 +67,6 @@ export function Buttons ({dispatcher}) {
     </div>
   )
 }
-Buttons.PropTypes = {
+Buttons.propTypes = {
   dispatcher: PropTypes.func.isRequired
 }

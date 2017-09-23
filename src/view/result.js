@@ -19,6 +19,6 @@ export function Result ({result}) {
     </div>
   )
 }
-Result.PropTypes = {
-  result: PropTypes.number.isRequired
+Result.propTypes = {
+  result: PropTypes.number
 }
