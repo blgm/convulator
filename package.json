@@ -8,7 +8,7 @@
     "test": "jest",
     "watch": "jest --watch",
     "production": "webpack -p",
-    "start": "webpack-dev-server --content-base dist/ --progress --open"
+    "start": "webpack-dev-server --content-base dist/ --progress --open --define process.env.NODE_ENV=\"'development'\""
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "enzyme": "^2.8.2",
     "jest": "^21.0.2",
+    "jest-serializer-enzyme": "^1.0.0",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -44,6 +45,7 @@
     "redux": "^3.6.0",
     "redux-actions": "^2.2.1",
     "redux-bind-selectors": "^1.1.1",
+    "redux-logger": "^3.0.6",
     "reselect": "^3.0.1",
     "standard": "^10.0.2",
     "typestyle": "^1.4.0",
@@ -64,6 +66,9 @@
         "lines": 100,
         "statements": 100
       }
-    }
+    },
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/jest-serializer-enzyme"
+    ]
   }
 }

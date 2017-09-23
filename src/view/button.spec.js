@@ -19,12 +19,17 @@ describe('Button (individual)', () => {
 })
 
 describe('Buttons (pad)', () => {
-  let fakeDispatcher
+  let fakeProps
   let wrapper
 
   beforeAll(() => {
-    fakeDispatcher = jest.fn()
-    wrapper = mount(<Buttons dispatcher={fakeDispatcher} />)
+    fakeProps = {
+      appendNumber: jest.fn(),
+      appendOperator: jest.fn(),
+      clearDigit: jest.fn(),
+      clearAll: jest.fn()
+    }
+    wrapper = mount(<Buttons {...fakeProps} />)
   })
 
   for (let i = 0; i <= 9; i++) {
@@ -32,7 +37,7 @@ describe('Buttons (pad)', () => {
       const button = wrapper.find('Button').filterWhere(n => n.prop('value') === i)
       expect(button.length).toBe(1)
       button.find('td').simulate('click')
-      expect(fakeDispatcher).toHaveBeenCalledWith({ type: 'appendNumber', payload: i })
+      expect(fakeProps.appendNumber).toHaveBeenCalledWith(i)
     })
   }
 
@@ -41,7 +46,7 @@ describe('Buttons (pad)', () => {
       const button = wrapper.find('Button').filterWhere(n => n.prop('value') === operator)
       expect(button.length).toBe(1)
       button.find('td').simulate('click')
-      expect(fakeDispatcher).toHaveBeenCalledWith({ type: 'appendOperator', payload: operator })
+      expect(fakeProps.appendOperator).toHaveBeenCalledWith(operator)
     })
   })
 
@@ -49,13 +54,13 @@ describe('Buttons (pad)', () => {
     const button = wrapper.find('Button').filterWhere(n => n.prop('value') === 'C')
     expect(button.length).toBe(1)
     button.find('td').simulate('click')
-    expect(fakeDispatcher).toHaveBeenCalledWith({ type: 'clearDigit' })
+    expect(fakeProps.clearDigit).toHaveBeenCalled()
   })
 
   it('has a clear all button', () => {
     const button = wrapper.find('Button').filterWhere(n => n.prop('value') === 'AC')
     expect(button.length).toBe(1)
     button.find('td').simulate('click')
-    expect(fakeDispatcher).toHaveBeenCalledWith({ type: 'clearAll' })
+    expect(fakeProps.clearAll).toHaveBeenCalled()
   })
 })

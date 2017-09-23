@@ -1,28 +1,18 @@
 import React from 'react'
-import {Buttons} from './button'
-import {Expression} from './expression'
-import {Result} from './result'
+import Buttons from './button'
+import Expression from './expression'
+import Result from './result'
 import {displayStyle, dividerStyle} from './style'
-import {connect} from 'react-redux'
 
-export const mapStateToProps = state => ({
-  expression: /* istanbul ignore next */ state.tokens.map(t => t.value),
-  result: state.result
-})
-
-export const dispatchProps = dispatch => ({dispatcher: dispatch})
-
-export const UnconnectedConvulator = ({expression, result, dispatcher}) => {
+export default function Convulator () {
   return (
     <div>
       <div className={displayStyle}>
-        <Expression expression={expression} />
+        <Expression />
         <div className={dividerStyle} />
-        <Result result={result} />
+        <Result />
       </div>
-      <Buttons dispatcher={dispatcher} />
+      <Buttons />
     </div>
   )
 }
-
-export const Convulator = connect(mapStateToProps, dispatchProps)(UnconnectedConvulator)
