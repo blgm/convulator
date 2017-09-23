@@ -1,6 +1,7 @@
 import React from 'react'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
 import {Token} from './token'
 import {Number} from './number'
 import {style} from 'typestyle'
@@ -34,15 +35,15 @@ const transitionStyle = style({
 export function Expression ({expression}) {
   return (
     <TransitionGroup className={expressionStyle} >
-      {expression.map((value, index) => (
+      {expression.map((token, index) => (
         <CSSTransition
           key={index}
           classNames={transitionStyle}
           timeout={250}
         >
-          {typeof value === 'number'
-            ? <Number value={value} />
-            : <Token value={value} />
+          {token.type === 'number'
+            ? <Number value={token.value} />
+            : <Token value={token.value} />
           }
         </CSSTransition>
       ))}
@@ -52,3 +53,7 @@ export function Expression ({expression}) {
 Expression.propTypes = {
   expression: PropTypes.array.isRequired
 }
+
+const mapStateToProps = state => ({expression: state.tokens})
+
+export default connect(mapStateToProps)(Expression)

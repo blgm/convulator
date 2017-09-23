@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
 import {Number} from './number'
 import {style} from 'typestyle'
 
@@ -9,7 +10,7 @@ export const resultStyle = style({
   height: '45px'
 })
 
-export function Result ({result}) {
+function Result ({result}) {
   return (
     <div className={resultStyle}>
       {typeof result !== 'number'
@@ -22,3 +23,7 @@ export function Result ({result}) {
 Result.propTypes = {
   result: PropTypes.number
 }
+
+const mapStateToProps = state => ({result: state.result})
+
+export default connect(mapStateToProps)(Result)

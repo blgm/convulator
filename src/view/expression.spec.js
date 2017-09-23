@@ -1,18 +1,29 @@
 /* eslint-env jest */
 import React from 'react'
-import {shallow} from 'enzyme'
-import {Expression} from './expression'
+import {mount} from 'enzyme'
+import {Provider} from 'react-redux'
+import Expression from './expression'
 
 describe('Expression', () => {
+  let fakeStore
+  beforeEach(() => {
+    fakeStore = {
+      dispatch: jest.fn(),
+      subscribe: jest.fn(),
+      getState: jest.fn()
+    }
+  })
+
   it('displays nothing when empty', () => {
-    const wrapper = shallow(<Expression expression={[]} />)
+    fakeStore.getState.mockReturnValue({tokens: []})
+    const wrapper = mount(<Provider store={fakeStore}><Expression /></Provider>)
     const tokens = wrapper.find('TransitionGroup').children()
     expect(tokens).toHaveLength(0)
   })
 
   it('can display a single number', () => {
-    const expression = [4]
-    const wrapper = shallow(<Expression expression={expression} />)
+    fakeStore.getState.mockReturnValue({tokens: [{value: 4, type: 'number'}]})
+    const wrapper = mount(<Provider store={fakeStore}><Expression /></Provider>)
     const tokens = wrapper.find('Token')
     expect(tokens).toHaveLength(0)
     const numbers = wrapper.find('Number')
@@ -21,14 +32,16 @@ describe('Expression', () => {
   })
 
   it('can display an expression with many tokens', () => {
-    const expression = [1, '+', 2, '*', 3]
-    const wrapper = shallow(<Expression expression={expression} />)
+    fakeStore.getState.mockReturnValue({tokens: [
+      {value: 4, type: 'number'},
+      {value: '+', type: 'operator'},
+      {value: 2, type: 'number'},
+      {value: '*', type: 'operator'},
+      {value: 3, type: 'number'}
+    ]})
+
+    const wrapper = mount(<Provider store={fakeStore}><Expression /></Provider>)
     const tokens = wrapper.find('TransitionGroup').children()
-    expect(tokens.length).toBe(5)
-    expect(tokens.at(0).children().at(0).prop('value')).toBe(1)
-    expect(tokens.at(1).children().at(0).prop('value')).toBe('+')
-    expect(tokens.at(2).children().at(0).prop('value')).toBe(2)
-    expect(tokens.at(3).children().at(0).prop('value')).toBe('*')
-    expect(tokens.at(4).children().at(0).prop('value')).toBe(3)
+    expect(tokens).toMatchSnapshot()
   })
 })

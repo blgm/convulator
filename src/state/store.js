@@ -1,9 +1,17 @@
-import {createStore as createReduxStore, combineReducers} from 'redux'
+import {createStore as createReduxStore, combineReducers, applyMiddleware, compose} from 'redux'
 import bindSelectors from 'redux-bind-selectors'
 import {createActions, handleActions} from 'redux-actions'
 import {createSelector} from 'reselect'
 import evaluate from '../evaluator/evaluator.js'
 import {appendDigit, operator, removeDigit} from '../evaluator/tokens'
+
+// Log in Demo only (not production OR test)
+const middleware = []
+/* istanbul ignore if */
+if (process.env.NODE_ENV === 'development') {
+  const {createLogger} = require(`redux-logger`)
+  middleware.push(createLogger({collapsed: true}))
+}
 
 export const actions = createActions(
   'appendNumber',
@@ -72,6 +80,9 @@ const resultSelector = createSelector(
 export function createStore () {
   return createReduxStore(
     combineReducers({tokens: tokensReducer}),
-    bindSelectors({result: resultSelector})
+    compose(
+      applyMiddleware(...middleware),
+      bindSelectors({result: resultSelector})
+    )
   )
 }

@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 import {Token} from './token'
 import {displayStyle} from './style'
 import {actions} from '../state/store'
@@ -12,25 +14,17 @@ Button.propTypes = {
   onSubmit: PropTypes.func.isRequired
 }
 
-export function Buttons ({dispatcher}) {
+export function Buttons ({appendNumber, appendOperator, clearDigit, clearAll}) {
   // Generate a function for the onSubmit event
   function getOnSubmit (value) {
     if (typeof value === 'number') {
-      return function () {
-        dispatcher(actions.appendNumber(value))
-      }
+      return () => appendNumber(value)
     } else if (value === 'C') {
-      return function () {
-        dispatcher(actions.clearDigit())
-      }
+      return clearDigit
     } else if (value === 'AC') {
-      return function () {
-        dispatcher(actions.clearAll())
-      }
+      return clearAll
     } else {
-      return function () {
-        dispatcher(actions.appendOperator(value))
-      }
+      return () => appendOperator(value)
     }
   }
 
@@ -68,5 +62,12 @@ export function Buttons ({dispatcher}) {
   )
 }
 Buttons.propTypes = {
-  dispatcher: PropTypes.func.isRequired
+  appendNumber: PropTypes.func.isRequired,
+  appendOperator: PropTypes.func.isRequired,
+  clearDigit: PropTypes.func.isRequired,
+  clearAll: PropTypes.func.isRequired
 }
+
+const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
+
+export default connect(undefined, mapDispatchToProps)(Buttons)
