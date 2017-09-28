@@ -17,7 +17,7 @@ describe('Expression', () => {
   it('displays nothing when empty', () => {
     fakeStore.getState.mockReturnValue({tokens: []})
     const wrapper = mount(<Provider store={fakeStore}><Expression /></Provider>)
-    const tokens = wrapper.find('TransitionGroup').children()
+    const tokens = wrapper.find('TransitionGroup').children().children()
     expect(tokens).toHaveLength(0)
   })
 

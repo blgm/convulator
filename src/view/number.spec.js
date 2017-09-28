@@ -13,7 +13,7 @@ describe('Number', () => {
     expect(group.text()).toBe('5')
     expect(group.hasClass(numberStyle)).toBeTruthy()
 
-    const digits = group.children()
+    const digits = group.children().children()
     expect(digits.length).toBe(1)
     expect(digits.text()).toBe('5')
   })
@@ -26,7 +26,7 @@ describe('Number', () => {
     expect(group.text()).toBe('234')
     expect(group.hasClass(numberStyle)).toBeTruthy()
 
-    const digits = group.children()
+    const digits = group.children().children()
     expect(digits.length).toBe(3)
     expect(digits.at(0).text()).toBe('2')
     expect(digits.at(1).text()).toBe('3')
