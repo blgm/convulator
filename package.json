@@ -34,8 +34,8 @@
     "big.js": "^4.0.0",
     "copy-webpack-plugin": "^4.0.1",
     "enzyme": "^2.8.2",
+    "enzyme-to-json": "2",
     "jest": "^21.0.2",
-    "jest-serializer-enzyme": "^1.0.0",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -68,7 +68,7 @@
       }
     },
     "snapshotSerializers": [
-      "<rootDir>/node_modules/jest-serializer-enzyme"
+      "enzyme-to-json/serializer"
     ]
   }
 }

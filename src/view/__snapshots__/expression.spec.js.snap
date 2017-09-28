@@ -5,6 +5,7 @@ Array [
   <CSSTransition
     classNames="f1xt770l"
     in={true}
+    key=".$0"
     onExited={[Function]}
     timeout={250}
   >
@@ -37,6 +38,7 @@ Array [
             <CSSTransition
               classNames="f16t478l"
               in={true}
+              key=".$0"
               onExited={[Function]}
               timeout={250}
             >
@@ -72,6 +74,7 @@ Array [
   <CSSTransition
     classNames="f1xt770l"
     in={true}
+    key=".$1"
     onExited={[Function]}
     timeout={250}
   >
@@ -104,6 +107,7 @@ Array [
   <CSSTransition
     classNames="f1xt770l"
     in={true}
+    key=".$2"
     onExited={[Function]}
     timeout={250}
   >
@@ -136,6 +140,7 @@ Array [
             <CSSTransition
               classNames="f16t478l"
               in={true}
+              key=".$0"
               onExited={[Function]}
               timeout={250}
             >
@@ -171,6 +176,7 @@ Array [
   <CSSTransition
     classNames="f1xt770l"
     in={true}
+    key=".$3"
     onExited={[Function]}
     timeout={250}
   >
@@ -203,6 +209,7 @@ Array [
   <CSSTransition
     classNames="f1xt770l"
     in={true}
+    key=".$4"
     onExited={[Function]}
     timeout={250}
   >
@@ -235,6 +242,7 @@ Array [
             <CSSTransition
               classNames="f16t478l"
               in={true}
+              key=".$0"
               onExited={[Function]}
               timeout={250}
             >
@@ -270,6 +278,7 @@ Array [
   <CSSTransition
     classNames="f16t478l"
     in={true}
+    key=".$0"
     onExited={[Function]}
     timeout={250}
   >
@@ -300,6 +309,7 @@ Array [
   <CSSTransition
     classNames="f16t478l"
     in={true}
+    key=".$0"
     onExited={[Function]}
     timeout={250}
   >
@@ -330,6 +340,7 @@ Array [
   <CSSTransition
     classNames="f16t478l"
     in={true}
+    key=".$0"
     onExited={[Function]}
     timeout={250}
   >
