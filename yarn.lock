@@ -858,9 +858,9 @@ big.js@^3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-3.1.3.tgz#4cada2193652eb3ca9ec8e55c9015669c9806978"
 
-big.js@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.0.1.tgz#176a7c0f347916ec3286ca27ad31ebf8d9fbed1b"
+big.js@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.0.2.tgz#09f5a20264475205fbaadbec631831921431419d"
 
 binary-extensions@^1.0.0:
   version "1.10.0"
@@ -5228,9 +5228,9 @@ webpack-dev-middleware@^1.11.0:
     range-parser "^1.0.3"
     time-stamp "^2.0.0"
 
-webpack-dev-server@^2.4.5:
-  version "2.9.1"
-  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.9.1.tgz#7ac9320b61b00eb65b2109f15c82747fc5b93585"
+webpack-dev-server@^2.9.2:
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.9.2.tgz#0fbab915701d25a905a60e1e784df19727da800f"
   dependencies:
     ansi-html "0.0.7"
     array-includes "^3.0.3"
