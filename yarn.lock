@@ -6448,9 +6448,9 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typestyle@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/typestyle/-/typestyle-1.6.0.tgz#4790d1c6d92e3ecff6d05a8ab7be22bf3b8f3d98"
+typestyle@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/typestyle/-/typestyle-1.7.0.tgz#df86cf65f6b94b6c69f02d6f06f868b186eede86"
   dependencies:
     free-style "2.5.1"
 
