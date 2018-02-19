@@ -5489,9 +5489,9 @@ redux-actions@2.2.1:
     lodash-es "^4.17.4"
     reduce-reducers "^0.1.0"
 
-redux-bind-selectors@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/redux-bind-selectors/-/redux-bind-selectors-1.1.1.tgz#624e9bc2e223285d3abc9055499f581b9c2c60fd"
+redux-bind-selectors@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/redux-bind-selectors/-/redux-bind-selectors-1.1.2.tgz#ba9446b659cf9231de86533727267b4afd9a396b"
 
 redux-logger@3.0.6:
   version "3.0.6"
