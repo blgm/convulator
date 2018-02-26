@@ -3,13 +3,14 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
+  mode: 'production',
   entry: './src/view/app.js',
   output: {
     filename: 'convulator.js',
     path: path.join(__dirname, '/dist')
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader'
