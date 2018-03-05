@@ -50,7 +50,7 @@
     "redux-logger": "3.0.6",
     "reselect": "3.0.1",
     "standard": "11.0.0",
-    "typestyle": "1.7.1",
+    "typestyle": "1.7.2",
     "webpack": "4.1.0",
     "webpack-bundle-analyzer": "2.11.1",
     "webpack-cli": "^2.0.9",
