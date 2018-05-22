@@ -1087,9 +1087,9 @@ bfj-node4@^5.2.0:
     check-types "^7.3.0"
     tryer "^1.0.0"
 
-big.js@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.1.0.tgz#4644831a703f443348f2a7c5aace6248f98374d6"
+big.js@5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.1.1.tgz#039cbcd23ef6190c5a0fc93cb224fa6f4fa643ec"
 
 big.js@^3.1.3:
   version "3.2.0"
