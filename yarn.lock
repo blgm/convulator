@@ -1292,6 +1292,10 @@ camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
+camelcase@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.0.0.tgz#03295527d58bd3cd4aa75363f35b2e8d97be2f42"
+
 caniuse-lite@^1.0.30000844:
   version "1.0.30000849"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000849.tgz#7e1aa48e6d58917dcd70aabf7e7a33514a258f91"
@@ -3317,6 +3321,10 @@ is-fullwidth-code-point@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/is-fullwidth-code-point/-/is-fullwidth-code-point-2.0.0.tgz#a3b30a5c4f199183167aaab93beefae3ddfb654f"
 
+is-function@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/is-function/-/is-function-1.0.1.tgz#12cfb98b65b57dd3d193a3121f5f6e2f437602b5"
+
 is-generator-fn@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-generator-fn/-/is-generator-fn-1.0.0.tgz#969d49e1bb3329f6bb7f09089be26578b2ddd46a"
@@ -4013,9 +4021,13 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
-lodash-es@^4.17.4, lodash-es@^4.17.5:
+lodash-es@^4.17.5:
   version "4.17.10"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.10.tgz#62cd7104cdf5dd87f235a837f0ede0e8e5117e05"
+
+lodash.curry@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.curry/-/lodash.curry-4.1.1.tgz#248e36072ede906501d75966200a86dab8b23170"
 
 lodash.flattendeep@^4.4.0:
   version "4.4.0"
@@ -5245,13 +5257,16 @@ reduce-reducers@^0.1.0:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/reduce-reducers/-/reduce-reducers-0.1.5.tgz#ff77ca8068ff41007319b8b4b91533c7e0e54576"
 
-redux-actions@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/redux-actions/-/redux-actions-2.4.0.tgz#620df42d264af88366b4e919c46ae68da7c9ce7c"
+redux-actions@2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/redux-actions/-/redux-actions-2.5.0.tgz#3c9ed3ed0858167bbf13950ef3b07168f02ba2ea"
   dependencies:
+    camelcase "^5.0.0"
     invariant "^2.2.1"
-    lodash "^4.13.1"
-    lodash-es "^4.17.4"
+    is-function "^1.0.1"
+    is-plain-object "^2.0.4"
+    is-symbol "^1.0.1"
+    lodash.curry "^4.1.1"
     reduce-reducers "^0.1.0"
 
 redux-bind-selectors@1.1.2:
