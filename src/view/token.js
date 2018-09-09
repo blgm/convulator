@@ -1,6 +1,6 @@
 import React from 'react'
-import {numberStyle, operatorStyle, equalsStyle, clearStyle} from './style'
-export function Token ({value}) {
+import { numberStyle, operatorStyle, equalsStyle, clearStyle } from './style'
+export function Token ({ value }) {
   return <div className={tokenClassName(value)}>{tokenValue(value)}</div>
 }
 

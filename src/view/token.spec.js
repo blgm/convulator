@@ -1,8 +1,8 @@
 /* eslint-env jest */
 import React from 'react'
-import {shallow} from 'enzyme'
-import {Token} from './token'
-import {numberStyle, operatorStyle, equalsStyle, clearStyle} from './style'
+import { shallow } from 'enzyme'
+import { Token } from './token'
+import { numberStyle, operatorStyle, equalsStyle, clearStyle } from './style'
 
 describe('Token', () => {
   it('can display a number', () => {

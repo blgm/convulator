@@ -1,7 +1,7 @@
 /* eslint-env jest */
 import React from 'react'
-import {mount} from 'enzyme'
-import {Provider} from 'react-redux'
+import { mount } from 'enzyme'
+import { Provider } from 'react-redux'
 import Convulator from './convulator'
 import Expression from './expression'
 import Result from './result'
@@ -12,7 +12,7 @@ describe('Convulator', () => {
     let fakeStore = {
       dispatch: jest.fn(),
       subscribe: jest.fn(),
-      getState: jest.fn().mockReturnValue({tokens: [{type: 'number', value: 4}], result: 4})
+      getState: jest.fn().mockReturnValue({ tokens: [{ type: 'number', value: 4 }], result: 4 })
     }
 
     const wrapper = mount(<Provider store={fakeStore}><Convulator /></Provider>)

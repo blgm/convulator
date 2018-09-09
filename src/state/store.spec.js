@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import {createStore, actions} from './store.js'
+import { createStore, actions } from './store.js'
 
 describe('store', () => {
   let store
