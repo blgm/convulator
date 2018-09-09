@@ -1,7 +1,7 @@
 /* eslint-env jest */
 import React from 'react'
-import {mount} from 'enzyme'
-import {Provider} from 'react-redux'
+import { mount } from 'enzyme'
+import { Provider } from 'react-redux'
 import Expression from './expression'
 
 describe('Expression', () => {
@@ -15,14 +15,14 @@ describe('Expression', () => {
   })
 
   it('displays nothing when empty', () => {
-    fakeStore.getState.mockReturnValue({tokens: []})
+    fakeStore.getState.mockReturnValue({ tokens: [] })
     const wrapper = mount(<Provider store={fakeStore}><Expression /></Provider>)
     const tokens = wrapper.find('TransitionGroup').children().children()
     expect(tokens).toHaveLength(0)
   })
 
   it('can display a single number', () => {
-    fakeStore.getState.mockReturnValue({tokens: [{value: 4, type: 'number'}]})
+    fakeStore.getState.mockReturnValue({ tokens: [{ value: 4, type: 'number' }] })
     const wrapper = mount(<Provider store={fakeStore}><Expression /></Provider>)
     const tokens = wrapper.find('Token')
     expect(tokens).toHaveLength(0)
@@ -32,13 +32,13 @@ describe('Expression', () => {
   })
 
   it('can display an expression with many tokens', () => {
-    fakeStore.getState.mockReturnValue({tokens: [
-      {value: 4, type: 'number'},
-      {value: '+', type: 'operator'},
-      {value: 2, type: 'number'},
-      {value: '*', type: 'operator'},
-      {value: 3, type: 'number'}
-    ]})
+    fakeStore.getState.mockReturnValue({ tokens: [
+      { value: 4, type: 'number' },
+      { value: '+', type: 'operator' },
+      { value: 2, type: 'number' },
+      { value: '*', type: 'operator' },
+      { value: 3, type: 'number' }
+    ] })
 
     const wrapper = mount(<Provider store={fakeStore}><Expression /></Provider>)
     const tokens = wrapper.find('TransitionGroup').children()

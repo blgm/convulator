@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import {LinkedList} from './linkedlist.js'
+import { LinkedList } from './linkedlist.js'
 const ll = () => new LinkedList()
 
 describe('LinkedList', () => {

@@ -1,7 +1,7 @@
 import React from 'react'
-import {numberStyle} from './style'
-import {style} from 'typestyle'
-import {TransitionGroup, CSSTransition} from 'react-transition-group'
+import { numberStyle } from './style'
+import { style } from 'typestyle'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 const transitionStyle = style({
   $nest: {
@@ -26,7 +26,7 @@ const transitionStyle = style({
   }
 })
 
-export function Number ({value}) {
+export function Number ({ value }) {
   const digits = value.toString().split('').map((digit, index) => (
     <CSSTransition
       key={index}
@@ -40,6 +40,6 @@ export function Number ({value}) {
   return <TransitionGroup className={numberStyle}>{digits}</TransitionGroup>
 }
 
-function Digit ({value}) {
+function Digit ({ value }) {
   return <div>{value}</div>
 }

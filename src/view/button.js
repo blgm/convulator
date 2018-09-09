@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
-import {Token} from './token'
-import {displayStyle} from './style'
-import {actions} from '../state/store'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { Token } from './token'
+import { displayStyle } from './style'
+import { actions } from '../state/store'
 
-export function Button ({value, onSubmit}) {
+export function Button ({ value, onSubmit }) {
   return <td onClick={onSubmit}><Token value={value} /></td>
 }
 Button.propTypes = {
@@ -14,7 +14,7 @@ Button.propTypes = {
   onSubmit: PropTypes.func.isRequired
 }
 
-export function Buttons ({appendNumber, appendOperator, clearDigit, clearAll}) {
+export function Buttons ({ appendNumber, appendOperator, clearDigit, clearAll }) {
   // Generate a function for the onSubmit event
   function getOnSubmit (value) {
     if (typeof value === 'number') {
