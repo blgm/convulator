@@ -1,8 +1,8 @@
 /* eslint-env jest */
 import React from 'react'
-import {mount} from 'enzyme'
-import {Number} from './number'
-import {numberStyle} from './style'
+import { mount } from 'enzyme'
+import { Number } from './number'
+import { numberStyle } from './style'
 
 describe('Number', () => {
   it('can display a single digit number', () => {

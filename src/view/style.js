@@ -1,4 +1,4 @@
-import {style} from 'typestyle'
+import { style } from 'typestyle'
 
 export const lineStyle = style({
   display: 'flex',
@@ -37,6 +37,6 @@ export const numberStyle = style(
   }
 )
 
-export const operatorStyle = style(tokenCommon, {background: 'lightblue'})
-export const equalsStyle = style(tokenCommon, {background: 'palegreen'})
-export const clearStyle = style(tokenCommon, {background: 'pink'})
+export const operatorStyle = style(tokenCommon, { background: 'lightblue' })
+export const equalsStyle = style(tokenCommon, { background: 'palegreen' })
+export const clearStyle = style(tokenCommon, { background: 'pink' })

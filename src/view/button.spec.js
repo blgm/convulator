@@ -1,7 +1,7 @@
 /* eslint-env jest */
 import React from 'react'
-import {shallow, mount} from 'enzyme'
-import {Button, Buttons} from './button'
+import { shallow, mount } from 'enzyme'
+import { Button, Buttons } from './button'
 
 describe('Button (individual)', () => {
   it('contains a token with the correct value', () => {

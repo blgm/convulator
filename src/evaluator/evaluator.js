@@ -1,4 +1,4 @@
-import {LinkedList} from './linkedlist.js'
+import { LinkedList } from './linkedlist.js'
 import Big from 'big.js'
 
 const binary = {
@@ -27,7 +27,7 @@ function allowed (next, found) {
 }
 
 function number (token) {
-  return {...token, resolve: () => Big(token.value)}
+  return { ...token, resolve: () => Big(token.value) }
 }
 
 function operator (token) {
