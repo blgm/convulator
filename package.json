@@ -44,7 +44,7 @@
     "react-dom": "16.5.2",
     "react-redux": "5.0.7",
     "react-test-renderer": "16.5.2",
-    "react-transition-group": "2.4.0",
+    "react-transition-group": "2.5.0",
     "redux": "4.0.0",
     "redux-actions": "2.6.1",
     "redux-bind-selectors": "1.1.3",
