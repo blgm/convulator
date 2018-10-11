@@ -33,7 +33,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.4",
-    "big.js": "5.1.2",
+    "big.js": "5.2.1",
     "copy-webpack-plugin": "4.5.3",
     "enzyme": "3.7.0",
     "enzyme-adapter-react-16": "1.6.0",
