@@ -43,7 +43,7 @@
     "react": "16.8.4",
     "react-dom": "16.8.4",
     "react-redux": "6.0.1",
-    "react-transition-group": "2.6.0",
+    "react-transition-group": "2.6.1",
     "react-test-renderer": "16.8.4",
     "redux": "4.0.1",
     "redux-actions": "2.6.5",
