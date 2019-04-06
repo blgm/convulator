@@ -27,8 +27,8 @@
   },
   "homepage": "https://gitlab.com/blgm/convulator#README",
   "dependencies": {
-    "@babel/core": "7.4.0",
-    "@babel/preset-env": "7.4.0",
+    "@babel/core": "7.4.3",
+    "@babel/preset-env": "7.4.3",
     "@babel/preset-react": "7.0.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "23.6.0",
