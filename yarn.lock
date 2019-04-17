@@ -7084,9 +7084,10 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typestyle@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/typestyle/-/typestyle-2.0.1.tgz#9593e6029ce5f23f1a5728ddd3ed6bf1ffa781f8"
+typestyle@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/typestyle/-/typestyle-2.0.2.tgz#e22f24f5d7e8506aa36b1fd3606824ac16291104"
+  integrity sha512-2nKRvMFE12MYudRu0UxYryZw3vbSOnZyuZiGTblYKIEi/U+VaH/hThv69AWCu89V7qc9uqrcQme1GCXmObomuQ==
   dependencies:
     csstype "^2.4.0"
     free-style "2.5.1"
