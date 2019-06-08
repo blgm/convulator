@@ -55,7 +55,7 @@
     "typestyle": "2.0.2",
     "webpack": "4.33.0",
     "webpack-bundle-analyzer": "3.3.2",
-    "webpack-cli": "3.3.2",
+    "webpack-cli": "3.3.3",
     "webpack-dev-server": "3.7.0"
   },
   "jest": {
