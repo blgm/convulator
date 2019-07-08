@@ -3369,9 +3369,10 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-free-style@2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/free-style/-/free-style-2.5.1.tgz#5e3f684c470d3bba7e4dbb43524e0a08917e873c"
+free-style@2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/free-style/-/free-style-2.6.1.tgz#6af512568291195854842cbbaacd95578a6a9a8b"
+  integrity sha512-uaVA8e57tvhrFKAl6x32SGIrGFBoeTAFtfHDzWxjPhiXQiUxOI6EEdEReRkjNO2H9XcdMJXXEnMHw8Q7iMYLbw==
 
 fresh@0.5.2:
   version "0.5.2"
@@ -7189,12 +7190,13 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typestyle@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/typestyle/-/typestyle-2.0.2.tgz#e22f24f5d7e8506aa36b1fd3606824ac16291104"
+typestyle@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/typestyle/-/typestyle-2.0.3.tgz#ab2af57dfc4d88974b113fe6a964b531e6141a9c"
+  integrity sha512-F50kKkqIjK5PWyalj3xaqAIopjzCp/MIBD7BW3Hkc2PQhVhRcy/KX0l1uv3+KNGy3xAOIWUxzr8ZibTChp88Ww==
   dependencies:
     csstype "^2.4.0"
-    free-style "2.5.1"
+    free-style "2.6.1"
 
 uglify-js@^3.1.4:
   version "3.4.9"
