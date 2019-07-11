@@ -45,7 +45,7 @@
     "react-redux": "7.1.0",
     "react-test-renderer": "16.8.6",
     "react-transition-group": "4.2.1",
-    "redux": "4.0.3",
+    "redux": "4.0.4",
     "redux-actions": "2.6.5",
     "redux-bind-selectors": "1.1.4",
     "redux-logger": "3.0.6",
