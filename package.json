@@ -49,7 +49,7 @@
     "redux-actions": "2.6.5",
     "redux-bind-selectors": "1.1.4",
     "redux-logger": "3.0.6",
-    "regenerator-runtime": "0.13.2",
+    "regenerator-runtime": "0.13.3",
     "reselect": "4.0.0",
     "standard": "13.0.2",
     "typestyle": "2.0.3",
