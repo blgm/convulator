@@ -7271,10 +7271,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typestyle@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/typestyle/-/typestyle-2.0.3.tgz#ab2af57dfc4d88974b113fe6a964b531e6141a9c"
-  integrity sha512-F50kKkqIjK5PWyalj3xaqAIopjzCp/MIBD7BW3Hkc2PQhVhRcy/KX0l1uv3+KNGy3xAOIWUxzr8ZibTChp88Ww==
+typestyle@2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/typestyle/-/typestyle-2.0.4.tgz#b8da5feaf8a4f9d1f69066f3cc4659098bd08457"
+  integrity sha512-+57eGqcEjiAc51hB/zXnZFoVuzwuxb9WbPpb1VT2zPJPIo88wGXod7dHa0IJ1Ue+sncHj2WZMZEPJRAqwVraoA==
   dependencies:
     csstype "^2.4.0"
     free-style "2.6.1"
