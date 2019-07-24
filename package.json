@@ -53,7 +53,7 @@
     "reselect": "4.0.0",
     "standard": "13.1.0",
     "typestyle": "2.0.4",
-    "webpack": "4.36.1",
+    "webpack": "4.37.0",
     "webpack-bundle-analyzer": "3.3.2",
     "webpack-cli": "3.3.6",
     "webpack-dev-server": "3.7.2"
