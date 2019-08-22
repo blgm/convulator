@@ -2426,13 +2426,15 @@ escodegen@^1.9.1:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-standard-jsx@~8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-standard-jsx/-/eslint-config-standard-jsx-8.0.0.tgz#62607f2a7c0c47aed46d3a37ad7ebc73b6f7e869"
+eslint-config-standard-jsx@8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-standard-jsx/-/eslint-config-standard-jsx-8.0.1.tgz#987bdeb063f0bfbd1de55300b02fdd220c94a68a"
+  integrity sha512-SDnpVLSzTcT0eLNTG7s8ffRi3WadBBpw+pFsiBj4BcrHOFOga9O/7mjtNRyPgetmsiDPWGxsiS4UdJLZhaIukA==
 
-eslint-config-standard@~14.0.0:
+eslint-config-standard@14.0.0:
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-14.0.0.tgz#1de7bf5af37542dc6eef879ab7eb5e5e0f830747"
+  integrity sha512-bV6e2LFvJEetrLjVAy4KWPOUsIhPWr040c649MigTPR6yUtaGuOt6CEAyNeez2lRiC+2+vjGWa02byjs25EB3A==
 
 eslint-import-resolver-node@^0.3.2:
   version "0.3.2"
@@ -6104,13 +6106,14 @@ standard-engine@^12.0.0:
     minimist "^1.1.0"
     pkg-conf "^3.1.0"
 
-standard@14.0.0:
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/standard/-/standard-14.0.0.tgz#72c1bedb9d24e04ab96adde98b44a512dc109d0f"
+standard@14.0.1:
+  version "14.0.1"
+  resolved "https://registry.yarnpkg.com/standard/-/standard-14.0.1.tgz#273eab81a7818b8d082aaf8e37e1bd9baf69084a"
+  integrity sha512-5wcQv1FEk0AB5qw09qj4IoHxy62pTkI3JICczReXsqhU3s3oBz01O053K+Tz8z9Tp15+KoevsdRV06T9D08ijw==
   dependencies:
     eslint "~6.1.0"
-    eslint-config-standard "~14.0.0"
-    eslint-config-standard-jsx "~8.0.0"
+    eslint-config-standard "14.0.0"
+    eslint-config-standard-jsx "8.0.1"
     eslint-plugin-import "~2.18.0"
     eslint-plugin-node "~9.1.0"
     eslint-plugin-promise "~4.2.1"
