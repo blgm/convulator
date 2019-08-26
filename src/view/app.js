@@ -7,7 +7,7 @@ import { cssRule } from 'typestyle'
 
 function render () {
   ReactDOM.render(
-    <Provider store={createStore()} >
+    <Provider store={createStore()}>
       <Convulator />
     </Provider>,
     document.getElementById('root')
@@ -28,10 +28,10 @@ function setupPage () {
   })
 
   cssRule('header', {
-    'fontSize': '30px',
-    'textAlign': 'center',
-    'marginTop': '20px',
-    'marginBottom': '15px'
+    fontSize: '30px',
+    textAlign: 'center',
+    marginTop: '20px',
+    marginBottom: '15px'
   })
 }
 

@@ -9,7 +9,7 @@ import Buttons from './button'
 
 describe('Convulator', () => {
   it('contains the expected components', () => {
-    let fakeStore = {
+    const fakeStore = {
       dispatch: jest.fn(),
       subscribe: jest.fn(),
       getState: jest.fn().mockReturnValue({ tokens: [{ type: 'number', value: 4 }], result: 4 })

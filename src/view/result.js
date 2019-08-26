@@ -15,8 +15,7 @@ function Result ({ result }) {
     <div className={resultStyle}>
       {typeof result !== 'number'
         ? null
-        : <Number value={result} />
-      }
+        : <Number value={result} />}
     </div>
   )
 }

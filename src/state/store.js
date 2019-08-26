@@ -9,7 +9,7 @@ import { appendDigit, operator, removeDigit } from '../evaluator/tokens'
 const middleware = []
 /* istanbul ignore if */
 if (process.env.NODE_ENV === 'development') {
-  const { createLogger } = require(`redux-logger`)
+  const { createLogger } = require('redux-logger')
   middleware.push(createLogger({ collapsed: true }))
 }
 
