@@ -34,7 +34,7 @@ const transitionStyle = style({
 
 export function Expression ({ expression }) {
   return (
-    <TransitionGroup className={expressionStyle} >
+    <TransitionGroup className={expressionStyle}>
       {expression.map((token, index) => (
         <CSSTransition
           key={index}
@@ -43,8 +43,7 @@ export function Expression ({ expression }) {
         >
           {token.type === 'number'
             ? <Number value={token.value} />
-            : <Token value={token.value} />
-          }
+            : <Token value={token.value} />}
         </CSSTransition>
       ))}
     </TransitionGroup>

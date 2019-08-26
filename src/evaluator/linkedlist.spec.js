@@ -70,7 +70,7 @@ describe('LinkedList', () => {
       const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
       numbers.forEach(number => list.add(number))
 
-      let result = []
+      const result = []
       for (let n = list.head; typeof n !== 'undefined'; n = n.next) {
         result.push(n.value)
       }
@@ -83,7 +83,7 @@ describe('LinkedList', () => {
       const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
       numbers.forEach(number => list.add(number))
 
-      let result = []
+      const result = []
       for (let n = list.tail; typeof n !== 'undefined'; n = n.previous) {
         result.push(n.value)
       }
@@ -142,7 +142,7 @@ describe('LinkedList', () => {
           }
         }
 
-        let result = []
+        const result = []
         for (let n = list.tail; typeof n !== 'undefined'; n = n.previous) {
           result.push(n.value)
         }

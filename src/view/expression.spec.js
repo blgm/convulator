@@ -32,13 +32,15 @@ describe('Expression', () => {
   })
 
   it('can display an expression with many tokens', () => {
-    fakeStore.getState.mockReturnValue({ tokens: [
-      { value: 4, type: 'number' },
-      { value: '+', type: 'operator' },
-      { value: 2, type: 'number' },
-      { value: '*', type: 'operator' },
-      { value: 3, type: 'number' }
-    ] })
+    fakeStore.getState.mockReturnValue({
+      tokens: [
+        { value: 4, type: 'number' },
+        { value: '+', type: 'operator' },
+        { value: 2, type: 'number' },
+        { value: '*', type: 'operator' },
+        { value: 3, type: 'number' }
+      ]
+    })
 
     const wrapper = mount(<Provider store={fakeStore}><Expression /></Provider>)
     const tokens = wrapper.find('TransitionGroup').children()
