@@ -52,7 +52,7 @@
     "redux-logger": "3.0.6",
     "regenerator-runtime": "0.13.3",
     "reselect": "4.0.0",
-    "standard": "14.2.0",
+    "standard": "14.3.0",
     "typestyle": "2.0.4",
     "webpack": "4.40.2",
     "webpack-bundle-analyzer": "3.5.0",
