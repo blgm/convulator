@@ -27,9 +27,9 @@
   },
   "homepage": "https://gitlab.com/blgm/convulator#README",
   "dependencies": {
-    "@babel/core": "7.8.7",
+    "@babel/core": "7.9.0",
     "@babel/preset-env": "7.9.0",
-    "@babel/preset-react": "7.9.1",
+    "@babel/preset-react": "7.9.4",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "25.1.0",
@@ -54,7 +54,7 @@
     "reselect": "4.0.0",
     "standard": "14.3.3",
     "typestyle": "2.0.4",
-    "webpack": "4.42.0",
+    "webpack": "4.42.1",
     "webpack-bundle-analyzer": "3.6.1",
     "webpack-cli": "3.3.11",
     "webpack-dev-server": "3.10.3"
