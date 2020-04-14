@@ -55,7 +55,7 @@
     "standard": "14.3.3",
     "typestyle": "2.1.0",
     "webpack": "4.42.1",
-    "webpack-bundle-analyzer": "3.6.1",
+    "webpack-bundle-analyzer": "3.7.0",
     "webpack-cli": "3.3.11",
     "webpack-dev-server": "3.10.3"
   },
