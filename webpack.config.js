@@ -22,7 +22,11 @@ module.exports = {
     'react/lib/ReactContext': true
   },
   plugins: [
-    new CopyWebpackPlugin([{ from: 'src/static' }]),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/static', to: 'dist' }
+      ]
+    }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       openAnalyzer: false
