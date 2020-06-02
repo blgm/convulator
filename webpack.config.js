@@ -24,7 +24,7 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/static', to: 'dist' }
+        { from: 'src/static', to: '.' }
       ]
     }),
     new BundleAnalyzerPlugin({
