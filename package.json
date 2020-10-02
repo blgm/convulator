@@ -48,7 +48,7 @@
     "react-transition-group": "4.4.1",
     "redux": "4.0.5",
     "redux-actions": "2.6.5",
-    "redux-bind-selectors": "1.1.7",
+    "redux-bind-selectors": "1.1.8",
     "redux-logger": "3.0.6",
     "regenerator-runtime": "0.13.7",
     "reselect": "4.0.0",
