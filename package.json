@@ -7,7 +7,7 @@
     "pretest": "standard --verbose --fix",
     "test": "jest",
     "watch": "jest --watch",
-    "production": "webpack -p",
+    "production": "webpack --mode production",
     "start": "webpack-dev-server --content-base dist/ --progress --open --define process.env.NODE_ENV=\"'development'\""
   },
   "repository": {
