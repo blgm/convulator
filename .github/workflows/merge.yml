@@ -1,0 +1,25 @@
+name: merge
+
+on: 
+  push:
+    branches: [ main ]
+  pull_request_target:
+
+jobs:
+  merge:
+    needs: test
+    name: Merge Dependabot Pull Pequest
+    runs-on: ubuntu-latest
+    if: ${{ success() && github.event_name == 'pull_request_target' && github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: merge
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.pulls.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              merge_method: 'squash'
+            })
