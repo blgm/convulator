@@ -78,7 +78,8 @@
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "testEnvironment": "jsdom"
   },
   "standard": {
     "parser": "babel-eslint"
