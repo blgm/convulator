@@ -39,7 +39,7 @@
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.6",
     "enzyme-to-json": "3.6.2",
-    "jest": "27.1.0",
+    "jest": "27.4.7",
     "prop-types": "15.7.2",
     "react": "16.14.0",
     "react-dom": "16.14.0",
