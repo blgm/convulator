@@ -1,6 +1,7 @@
 {
   "name": "convulator",
   "version": "0.0.1",
+  "type": "module",
   "description": "Converter and calculator",
   "main": "index.js",
   "scripts": {
