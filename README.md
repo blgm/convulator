@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/blgm/convulator.svg?branch=master)](https://travis-ci.org/blgm/convulator)
-[![Dependencies](https://david-dm.org/blgm/convulator.svg)](https://david-dm.org/blgm/convulator)
 
 # Convulator
 A calculator and converter that is very much at alpha stage.
