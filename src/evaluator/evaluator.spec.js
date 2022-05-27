@@ -12,7 +12,7 @@ const number = value => {
 const operator = value => {
   return {
     type: 'operator',
-    value: value
+    value
   }
 }
 

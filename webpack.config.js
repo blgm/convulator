@@ -1,5 +1,5 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin'
-import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
 export default {
   mode: 'production',
