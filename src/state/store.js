@@ -3,7 +3,7 @@ import bindSelectors from 'redux-bind-selectors'
 import { createActions, handleActions } from 'redux-actions'
 import { createSelector } from 'reselect'
 import evaluate from '../evaluator/evaluator.js'
-import { appendDigit, operator, removeDigit } from '../evaluator/tokens'
+import { appendDigit, operator, removeDigit } from '../evaluator/tokens.js'
 
 // Log in Demo only (not production OR test)
 const middleware = []

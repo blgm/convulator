@@ -1,8 +1,8 @@
 import React from 'react'
-import Buttons from './button'
-import Expression from './expression'
-import Result from './result'
-import { displayStyle, dividerStyle } from './style'
+import Buttons from './button.js'
+import Expression from './expression.js'
+import Result from './result.js'
+import { displayStyle, dividerStyle } from './style.js'
 
 export default function Convulator () {
   return (

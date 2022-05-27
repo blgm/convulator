@@ -1,13 +1,12 @@
-const path = require('path')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+import CopyWebpackPlugin from 'copy-webpack-plugin'
+import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 
-module.exports = {
+export default {
   mode: 'production',
   entry: './src/view/app.js',
   output: {
     filename: 'convulator.js',
-    path: path.join(__dirname, '/dist')
+    path: new URL('dist', import.meta.url).pathname
   },
   module: {
     rules: [{

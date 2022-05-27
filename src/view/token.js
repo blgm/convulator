@@ -1,5 +1,5 @@
 import React from 'react'
-import { numberStyle, operatorStyle, equalsStyle, clearStyle } from './style'
+import { numberStyle, operatorStyle, equalsStyle, clearStyle } from './style.js'
 export function Token ({ value }) {
   return <div className={tokenClassName(value)}>{tokenValue(value)}</div>
 }

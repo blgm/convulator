@@ -2,8 +2,8 @@ import React from 'react'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Token } from './token'
-import { Number } from './number'
+import { Token } from './token.js'
+import { Number } from './number.js'
 import { style } from 'typestyle'
 
 export const expressionStyle = style({

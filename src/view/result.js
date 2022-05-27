@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Number } from './number'
+import { Number } from './number.js'
 import { style } from 'typestyle'
 
 export const resultStyle = style({

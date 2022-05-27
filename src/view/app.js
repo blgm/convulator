@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore } from '../state/store'
-import Convulator from './convulator'
+import { createStore } from '../state/store.js'
+import Convulator from './convulator.js'
 import { Provider } from 'react-redux'
 import { cssRule } from 'typestyle'
 

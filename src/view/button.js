@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Token } from './token'
-import { displayStyle } from './style'
-import { actions } from '../state/store'
+import { Token } from './token.js'
+import { displayStyle } from './style.js'
+import { actions } from '../state/store.js'
 
 export function Button ({ value, onSubmit }) {
   return <td onClick={onSubmit}><Token value={value} /></td>
