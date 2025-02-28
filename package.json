@@ -57,7 +57,7 @@
     "standard": "17.1.0",
     "typestyle": "2.4.0",
     "webpack": "5.91.0",
-    "webpack-bundle-analyzer": "4.10.1",
+    "webpack-bundle-analyzer": "4.10.2",
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "5.0.4"
   },
